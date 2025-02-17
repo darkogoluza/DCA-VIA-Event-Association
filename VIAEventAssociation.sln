@@ -4,6 +4,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment1", "Assignment1\Assignment1.csproj", "{88CA91CE-C435-4968-83E2-4149DDB7182B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2", "Assignment2\Assignment2.csproj", "{D0A9D03E-B393-4848-8EC1-41AE2262E90C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -11,5 +13,12 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{88CA91CE-C435-4968-83E2-4149DDB7182B} = {78C713FC-10F0-4E13-A7E9-D1ED91AA9F0E}
+		{D0A9D03E-B393-4848-8EC1-41AE2262E90C} = {78C713FC-10F0-4E13-A7E9-D1ED91AA9F0E}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
