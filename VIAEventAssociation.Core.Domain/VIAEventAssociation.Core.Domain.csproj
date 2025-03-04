@@ -11,7 +11,6 @@
       <Folder Include="Aggregates\Guests\" />
       <Folder Include="Aggregates\Invitations\" />
       <Folder Include="Aggregates\RequestsToJoin\" />
-      <Folder Include="Common\Bases\" />
       <Folder Include="Common\Values\" />
     </ItemGroup>
 
