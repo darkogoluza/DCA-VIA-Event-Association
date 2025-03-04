@@ -1,4 +1,6 @@
-﻿namespace ViaEventAssociation.Core.Tools.OperationResult;
+﻿using System.Runtime.InteropServices.JavaScript;
+
+namespace ViaEventAssociation.Core.Tools.OperationResult;
 
 public class Error
 {
@@ -21,4 +23,7 @@ public class Error
 
     // User validation
     public static Error UserDoesNotExists(int userId) => new Error($"User with id {userId} does not exist!", 404);
+    
+    // Custom errors
+    public static Error BadInput(string msg) => new Error(msg, 400);
 }
