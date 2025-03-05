@@ -26,3 +26,7 @@ Example:
         Assert.Contains(Error.BadTitle(), newTitleResult.errors);
     }
 ```
+# Use Cases
+* What about use cases that depend on other use case? how to handle that when testing?
+* Do I make more of my own tests to follow ZOMBIE method?
+* Do I additionally test value objects?
