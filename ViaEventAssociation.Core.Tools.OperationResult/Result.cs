@@ -1,11 +1,10 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-
-namespace ViaEventAssociation.Core.Tools.OperationResult;
+﻿namespace ViaEventAssociation.Core.Tools.OperationResult;
 
 public class Result<T>
 {
     public List<Error> errors { get; } = new List<Error>();
     public bool isFailure => errors.Count > 0;
+    public bool isSuccess => !isFailure;
     public T payload { get; }
 
     protected Result(T? value, List<Error> errors)

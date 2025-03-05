@@ -1,4 +1,5 @@
-﻿using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
+﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
+using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
@@ -11,7 +12,7 @@ public class Guest : AggregateRoot
     private MiddleName? _middleName;
     private Email _email;
 
-    private Guest(FirstName firstName, LastName lastName, Email email, MiddleName? middleName = null) 
+    private Guest(FirstName firstName, LastName lastName, Email email, MiddleName? middleName = null)
     {
         _firstName = firstName;
         _lastName = lastName;

@@ -1,27 +1,30 @@
-﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
+﻿using System.Runtime.CompilerServices;
+using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Invitations.Entities;
+using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 
-public class VeaEvent
+public class VeaEvent: AggregateRoot
 {
-    private Title _title;
-    private Description _description;
-    private DateTime _startDateTime;
-    private DateTime _endDateTime;
-    private bool _visibility;
-    private MaxNoOfGuests _maxNoOfGuests;
-    private EventStatusType _eventStatusType;
+    public EventId EventId { get; }
+    internal Title _title;
+    internal Description _description;
+    internal DateTime _startDateTime;
+    internal DateTime _endDateTime;
+    internal bool _visibility;
+    internal MaxNoOfGuests _maxNoOfGuests;
+    internal EventStatusType _eventStatusType;
     private Location _location;
     private IList<Guest> _guests;
     private IList<Invitation> _invitations;
 
-
-    private VeaEvent(Title title, Description description, DateTime startDateTime, DateTime endDateTime, bool visibility, MaxNoOfGuests maxNoOfGuests, EventStatusType eventStatusType, Location location)
+    private VeaEvent(EventId id, Title title, Description description, DateTime startDateTime, DateTime endDateTime, bool visibility, MaxNoOfGuests maxNoOfGuests, EventStatusType eventStatusType) : base(id.Id)
     {
+        EventId = id;
         _title = title;
         _description = description;
         _startDateTime = startDateTime;
@@ -29,15 +32,35 @@ public class VeaEvent
         _visibility = visibility;
         _maxNoOfGuests = maxNoOfGuests;
         _eventStatusType = eventStatusType;
-        _location = location;
         _guests = new List<Guest>();
         _invitations = new List<Invitation>();
     }
 
     public static Result<VeaEvent> Create(string title, string description, DateTime startDateTime,
-        DateTime endDateTime, bool visibility, int maxNoOfGuests, EventStatusType eventStatusType, Location location)
+        DateTime endDateTime)
     {
-        throw new NotImplementedException();
+        var titleResult = Title.Create(title);
+        var descriptionResult = Description.Create(description);
+        var maxNoOfGuestsResult = MaxNoOfGuests.Create(5);
+        var eventIdResult = EventId.Create(Guid.NewGuid());
+        
+        var errors = new List<Error>();
+        
+        if (titleResult.isFailure)
+            errors.AddRange(titleResult.errors);
+
+        if (descriptionResult.isFailure)
+            errors.AddRange(descriptionResult.errors);
+        
+        if (eventIdResult.isFailure)
+            errors.AddRange(descriptionResult.errors);
+
+
+        if (errors.Any())
+            return errors.ToArray();
+
+        var veaEvent = new VeaEvent(eventIdResult.payload, titleResult.payload, descriptionResult.payload, startDateTime, endDateTime, false, maxNoOfGuestsResult.payload, EventStatusType.Draft);
+        return veaEvent;
     }
 
     public Result<VeaEvent> UpdateTitle(Title title)
