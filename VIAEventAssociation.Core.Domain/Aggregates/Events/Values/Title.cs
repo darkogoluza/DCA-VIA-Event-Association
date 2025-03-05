@@ -14,6 +14,15 @@ public class Title : ValueObject
 
     public static Result<Title> Create(string value)
     {
+        if (string.IsNullOrEmpty(value))
+            return Error.BadTitle();
+        
+        if(value.Length < 3)
+            return Error.BadTitle();
+        
+        if(value.Length > 75)
+            return Error.BadTitle();
+        
         return new Title(value);
     }
 

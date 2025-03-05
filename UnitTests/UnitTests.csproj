@@ -22,7 +22,7 @@
 
     <ItemGroup>
       <Folder Include="Common\" />
-      <Folder Include="Fakes\DateTime\" />
+      <Folder Include="Fakes\" />
     </ItemGroup>
 
     <ItemGroup>

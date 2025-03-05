@@ -14,7 +14,7 @@ public class CreateEventAggregateUnitTests
     }
 
     [Fact]
-    public void CreateANewEventTestEventId()
+    public void CreateANewEvent_EventId()
     {
         // Arrange
         string expectedTitle = "Working Title";
@@ -32,7 +32,7 @@ public class CreateEventAggregateUnitTests
     }
     
     [Fact]
-    public void CreateANewEventTestCreatedValuesAndDefaults()
+    public void CreateANewEvent_CreatedValuesAndDefaults()
     {
         // Arrange
         string expectedTitle = "Working Title";

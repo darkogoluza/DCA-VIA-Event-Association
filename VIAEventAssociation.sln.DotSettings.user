@@ -2,9 +2,10 @@
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
 	
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Program Files\JetBrains\JetBrains Rider 2024.3.5\tools\MSBuild\Current\Bin\MSBuild.exe</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1d277d29_002Df069_002D447b_002Da1b9_002D4506618e8ff0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CreateANewEventTestEventId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1d277d29_002Df069_002D447b_002Da1b9_002D4506618e8ff0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateANewEventTestEventId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.Event.CreateEvent.CreateEventAggregateUnitTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.Event.UpdateTitle.EventDescriptionUnitTests.UpdateEventTitle&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2399b9fc_002D5b1b_002D48b2_002D9d4c_002D82ba76135bfb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateANewEvent #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
@@ -20,6 +21,11 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=88ad23df_002D8b92_002D41e7_002Dba52_002D1522bb99db53/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateANewEvent #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.Event.CreateEvent.CreateEventAggregateUnitTests.CreateANewEventTestEventId&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9326c724_002D4a97_002D44d3_002D9876_002Db96fc7bc1078/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UpdateEventTitle" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.Event.UpdateTitle.EventDescriptionUnitTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a5305e55_002D627e_002D4ab4_002D8c26_002D8ec8e9bde6a0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateANewEvent" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;

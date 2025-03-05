@@ -65,7 +65,16 @@ public class VeaEvent: AggregateRoot
 
     public Result<VeaEvent> UpdateTitle(Title title)
     {
-        throw new NotImplementedException();
+        if (Equals(_eventStatusType, EventStatusType.Active))
+            return Error.CanNotModifyActiveEvent();
+        
+        if (Equals(_eventStatusType, EventStatusType.Cancelled))
+            return Error.CanNotModifyCancelledEvent();
+        
+        if (Equals(_eventStatusType, EventStatusType.Draft) || Equals(_eventStatusType,EventStatusType.Ready))
+            _title = title;
+
+        return this;
     }
     
     public Result<VeaEvent> UpdateDescription(Description description)
@@ -95,12 +104,14 @@ public class VeaEvent: AggregateRoot
     
     public Result<None> Readie()
     {
-        throw new NotImplementedException();
+        _eventStatusType = EventStatusType.Ready;
+        return Result<None>.Success();
     }
     
     public Result<None> Activate()
     {
-        throw new NotImplementedException();
+        _eventStatusType = EventStatusType.Active;
+        return Result<None>.Success();
     }
     
     public Result<None> AcceptInvitation(Guest guest, Invitation invitation)
@@ -120,7 +131,8 @@ public class VeaEvent: AggregateRoot
 
     public Result<None> Cancel()
     {
-        throw new NotImplementedException();
+        _eventStatusType = EventStatusType.Cancelled;
+        return Result<None>.Success();
     }
     
     public Result<None> Delete()
