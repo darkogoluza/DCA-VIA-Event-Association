@@ -3,7 +3,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 
-public class Description: ValueObject
+public class Description : ValueObject
 {
     public string Value { get; }
 
@@ -14,6 +14,12 @@ public class Description: ValueObject
 
     public static Result<Description> Create(string value)
     {
+        if (value == null)
+            return Error.BadDescription();
+
+        if (value.Length > 250)
+            return Error.BadDescription();
+
         return new Description(value);
     }
 

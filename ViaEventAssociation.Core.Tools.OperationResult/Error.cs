@@ -47,6 +47,7 @@ public class Error
     // Custom errors
     public static Error BadInput(string msg) => new Error(msg, 400);
     public static Error BadTitle() => BadInput("Title length is between 3 and 75 (inclusive) characters.");
+    public static Error BadDescription() => BadInput("Description length is more then 250 characters.");
     public static Error CanNotModifyActiveEvent() => new Error( "Can not modify an active event.", 403 );
     public static Error CanNotModifyCancelledEvent() => new Error( "Can not modify a cancelled event.", 403 );
 }

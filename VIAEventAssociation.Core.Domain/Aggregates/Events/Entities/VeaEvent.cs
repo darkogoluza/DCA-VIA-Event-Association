@@ -8,7 +8,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 
-public class VeaEvent: AggregateRoot
+public class VeaEvent : AggregateRoot
 {
     public EventId EventId { get; }
     internal Title _title;
@@ -22,7 +22,8 @@ public class VeaEvent: AggregateRoot
     private IList<Guest> _guests;
     private IList<Invitation> _invitations;
 
-    private VeaEvent(EventId id, Title title, Description description, DateTime startDateTime, DateTime endDateTime, bool visibility, MaxNoOfGuests maxNoOfGuests, EventStatusType eventStatusType) : base(id.Id)
+    private VeaEvent(EventId id, Title title, Description description, DateTime startDateTime, DateTime endDateTime,
+        bool visibility, MaxNoOfGuests maxNoOfGuests, EventStatusType eventStatusType) : base(id.Id)
     {
         EventId = id;
         _title = title;
@@ -43,15 +44,15 @@ public class VeaEvent: AggregateRoot
         var descriptionResult = Description.Create(description);
         var maxNoOfGuestsResult = MaxNoOfGuests.Create(5);
         var eventIdResult = EventId.Create(Guid.NewGuid());
-        
+
         var errors = new List<Error>();
-        
+
         if (titleResult.isFailure)
             errors.AddRange(titleResult.errors);
 
         if (descriptionResult.isFailure)
             errors.AddRange(descriptionResult.errors);
-        
+
         if (eventIdResult.isFailure)
             errors.AddRange(descriptionResult.errors);
 
@@ -59,34 +60,44 @@ public class VeaEvent: AggregateRoot
         if (errors.Any())
             return errors.ToArray();
 
-        var veaEvent = new VeaEvent(eventIdResult.payload, titleResult.payload, descriptionResult.payload, startDateTime, endDateTime, false, maxNoOfGuestsResult.payload, EventStatusType.Draft);
+        var veaEvent = new VeaEvent(eventIdResult.payload, titleResult.payload, descriptionResult.payload,
+            startDateTime, endDateTime, false, maxNoOfGuestsResult.payload, EventStatusType.Draft);
         return veaEvent;
     }
 
-    public Result<VeaEvent> UpdateTitle(Title title)
+    public Result<None> UpdateTitle(Title title)
+    {
+        if (Equals(_eventStatusType, EventStatusType.Active))
+            return Error.CanNotModifyActiveEvent();
+
+        if (Equals(_eventStatusType, EventStatusType.Cancelled))
+            return Error.CanNotModifyCancelledEvent();
+
+        if (Equals(_eventStatusType, EventStatusType.Draft) || Equals(_eventStatusType, EventStatusType.Ready))
+            _title = title;
+
+        return Result<None>.Success();
+    }
+
+    public Result<None> UpdateDescription(Description description)
     {
         if (Equals(_eventStatusType, EventStatusType.Active))
             return Error.CanNotModifyActiveEvent();
         
         if (Equals(_eventStatusType, EventStatusType.Cancelled))
             return Error.CanNotModifyCancelledEvent();
-        
-        if (Equals(_eventStatusType, EventStatusType.Draft) || Equals(_eventStatusType,EventStatusType.Ready))
-            _title = title;
 
-        return this;
+        if (Equals(_eventStatusType, EventStatusType.Draft) || Equals(_eventStatusType, EventStatusType.Ready))
+            _description = description;
+
+        return Result<None>.Success();
     }
-    
-    public Result<VeaEvent> UpdateDescription(Description description)
-    {
-        throw new NotImplementedException();
-    }
-    
+
     public Result<VeaEvent> UpdateStartDateTime(DateTime startDateTime)
     {
         throw new NotImplementedException();
     }
-    
+
     public Result<VeaEvent> UpdateEndDateTime(DateTime endDateTime)
     {
         throw new NotImplementedException();
@@ -96,34 +107,34 @@ public class VeaEvent: AggregateRoot
     {
         throw new NotImplementedException();
     }
-    
+
     public Result<VeaEvent> SetMaxNoOfGuests(MaxNoOfGuests maxNoOfGuests)
     {
         throw new NotImplementedException();
     }
-    
+
     public Result<None> Readie()
     {
         _eventStatusType = EventStatusType.Ready;
         return Result<None>.Success();
     }
-    
+
     public Result<None> Activate()
     {
         _eventStatusType = EventStatusType.Active;
         return Result<None>.Success();
     }
-    
+
     public Result<None> AcceptInvitation(Guest guest, Invitation invitation)
     {
         throw new NotImplementedException();
     }
-    
+
     public Result<None> DeclineInvitation(Guest guest, Invitation invitation)
     {
         throw new NotImplementedException();
     }
-    
+
     public Result<None> ExtendInvitation(Guest guest, Invitation invitation)
     {
         throw new NotImplementedException();
@@ -134,7 +145,7 @@ public class VeaEvent: AggregateRoot
         _eventStatusType = EventStatusType.Cancelled;
         return Result<None>.Success();
     }
-    
+
     public Result<None> Delete()
     {
         throw new NotImplementedException();
