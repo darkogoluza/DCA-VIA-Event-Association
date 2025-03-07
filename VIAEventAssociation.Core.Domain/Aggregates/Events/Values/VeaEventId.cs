@@ -3,21 +3,21 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 
-public class EventId: ValueObject
+public class VeaEventId: ValueObject
 {
     public Guid Id { get; }
 
-    private EventId(Guid id)
+    private VeaEventId(Guid id)
     {
         Id = id;
     }
 
-    public static Result<EventId> Create(Guid id)
+    public static Result<VeaEventId> Create(Guid id)
     {
         if (id == Guid.Empty)
             return Error.BadInput("EventId cannot be empty.");
 
-        return new EventId(id);
+        return new VeaEventId(id);
     }
    
     protected override IEnumerable<object> GetEqualityComponents()

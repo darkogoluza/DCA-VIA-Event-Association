@@ -10,7 +10,7 @@ namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 
 public class VeaEvent : AggregateRoot
 {
-    public EventId EventId { get; }
+    public VeaEventId VeaEventId { get; }
     internal Title _title;
     internal Description _description;
     internal DateTime _startDateTime;
@@ -22,10 +22,10 @@ public class VeaEvent : AggregateRoot
     private IList<Guest> _guests;
     private IList<Invitation> _invitations;
 
-    private VeaEvent(EventId id, Title title, Description description, DateTime startDateTime, DateTime endDateTime,
+    private VeaEvent(VeaEventId id, Title title, Description description, DateTime startDateTime, DateTime endDateTime,
         bool visibility, MaxNoOfGuests maxNoOfGuests, EventStatusType eventStatusType) : base(id.Id)
     {
-        EventId = id;
+        VeaEventId = id;
         _title = title;
         _description = description;
         _startDateTime = startDateTime;
@@ -37,30 +37,22 @@ public class VeaEvent : AggregateRoot
         _invitations = new List<Invitation>();
     }
 
-    public static Result<VeaEvent> Create(string title, string description, DateTime startDateTime,
+    public static Result<VeaEvent> Create(Title title, Description description, DateTime startDateTime,
         DateTime endDateTime)
     {
-        var titleResult = Title.Create(title);
-        var descriptionResult = Description.Create(description);
         var maxNoOfGuestsResult = MaxNoOfGuests.Create(5);
-        var eventIdResult = EventId.Create(Guid.NewGuid());
+        var eventIdResult = VeaEventId.Create(Guid.NewGuid());
 
         var errors = new List<Error>();
 
-        if (titleResult.isFailure)
-            errors.AddRange(titleResult.errors);
-
-        if (descriptionResult.isFailure)
-            errors.AddRange(descriptionResult.errors);
-
         if (eventIdResult.isFailure)
-            errors.AddRange(descriptionResult.errors);
+            errors.AddRange(eventIdResult.errors);
 
 
         if (errors.Any())
             return errors.ToArray();
 
-        var veaEvent = new VeaEvent(eventIdResult.payload, titleResult.payload, descriptionResult.payload,
+        var veaEvent = new VeaEvent(eventIdResult.payload, title, description,
             startDateTime, endDateTime, false, maxNoOfGuestsResult.payload, EventStatusType.Draft);
         return veaEvent;
     }
@@ -83,7 +75,7 @@ public class VeaEvent : AggregateRoot
     {
         if (Equals(_eventStatusType, EventStatusType.Active))
             return Error.CanNotModifyActiveEvent();
-        
+
         if (Equals(_eventStatusType, EventStatusType.Cancelled))
             return Error.CanNotModifyCancelledEvent();
 

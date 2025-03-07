@@ -7,20 +7,22 @@ namespace VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 
 public class Guest : AggregateRoot
 {
+    public GuestId GuestId { get; }
     private FirstName _firstName;
     private LastName _lastName;
     private MiddleName? _middleName;
     private Email _email;
 
-    private Guest(FirstName firstName, LastName lastName, Email email, MiddleName? middleName = null)
+    private Guest(GuestId id,FirstName firstName, LastName lastName, Email email, MiddleName? middleName = null): base(id.Id)
     {
         _firstName = firstName;
         _lastName = lastName;
         _middleName = middleName;
         _email = email;
+        GuestId = id;
     }
 
-    public static Result<Guest> Create(string firstName, string lastName, string email, string? middleName = null)
+    public static Result<Guest> Create(FirstName firstName, LastName lastName, Email email, MiddleName? middleName = null)
     {
         throw new NotImplementedException();
     }

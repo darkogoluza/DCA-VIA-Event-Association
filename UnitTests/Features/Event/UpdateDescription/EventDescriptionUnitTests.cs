@@ -14,11 +14,11 @@ public class EventDescriptionUnitTests
 
     public EventDescriptionUnitTests()
     {
-        string expectedTitle = "Working Title";
-        string expectedDescription = "Some description";
+        var expectedTitleResult = Title.Create("Working Title");
+        var expectedDescriptionResult = Description.Create("Some description");
         DateTime start = new DateTime(2025, 3, 4, 12, 0, 0);
         DateTime end = new DateTime(2025, 3, 4, 13, 0, 0);
-        VeaEvent = VeaEvent.Create(expectedTitle, expectedDescription, start, end).payload;
+        VeaEvent = VeaEvent.Create(expectedTitleResult.payload, expectedDescriptionResult.payload, start, end).payload;
     }
 
     [Fact]

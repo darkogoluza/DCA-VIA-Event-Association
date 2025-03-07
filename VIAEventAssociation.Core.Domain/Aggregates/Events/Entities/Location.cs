@@ -19,7 +19,7 @@ public class Location: Entity
       _endWorkingTimeDate = endWorkingTimeDate;
    }
 
-   protected static Result<Location> Create(string locationName, int locationCapacity, DateTime startWorkingTimeDate,
+   protected static Result<Location> Create(LocationName locationName, LocationCapacity locationCapacity, DateTime startWorkingTimeDate,
       DateTime endWorkingTimeDate)
    {
       throw new NotImplementedException();
