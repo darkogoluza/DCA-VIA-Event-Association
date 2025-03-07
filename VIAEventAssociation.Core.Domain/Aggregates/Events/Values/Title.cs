@@ -16,13 +16,13 @@ public class Title : ValueObject
     {
         if (string.IsNullOrEmpty(value))
             return Error.BadTitle();
-        
-        if(value.Length < 3)
+
+        if (value.Length < 3)
             return Error.BadTitle();
-        
-        if(value.Length > 75)
+
+        if (value.Length > 75)
             return Error.BadTitle();
-        
+
         return new Title(value);
     }
 

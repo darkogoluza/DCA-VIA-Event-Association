@@ -3,7 +3,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 
-public class MiddleName: ValueObject
+public class MiddleName : ValueObject
 {
     public string Value { get; }
 
@@ -19,7 +19,7 @@ public class MiddleName: ValueObject
 
         return new MiddleName(value);
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

@@ -2,7 +2,7 @@
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 
-public class LocationCapacity: ValueObject
+public class LocationCapacity : ValueObject
 {
     protected override IEnumerable<object> GetEqualityComponents()
     {

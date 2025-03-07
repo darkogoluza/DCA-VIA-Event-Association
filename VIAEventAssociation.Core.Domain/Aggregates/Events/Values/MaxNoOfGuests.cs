@@ -3,7 +3,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 
-public class MaxNoOfGuests: ValueObject
+public class MaxNoOfGuests : ValueObject
 {
     public int Value { get; }
 

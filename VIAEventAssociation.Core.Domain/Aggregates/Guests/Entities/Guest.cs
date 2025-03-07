@@ -13,7 +13,7 @@ public class Guest : AggregateRoot
     private MiddleName? _middleName;
     private Email _email;
 
-    private Guest(GuestId id,FirstName firstName, LastName lastName, Email email, MiddleName? middleName = null): base(id.Id)
+    private Guest(GuestId id, FirstName firstName, LastName lastName, Email email, MiddleName? middleName = null) : base(id.Id)
     {
         _firstName = firstName;
         _lastName = lastName;

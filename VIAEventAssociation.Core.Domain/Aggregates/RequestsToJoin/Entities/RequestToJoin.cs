@@ -10,11 +10,11 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 public class RequestToJoin : AggregateRoot
 {
     private StatusType _statusType;
-    private Reasion _reason ;
+    private Reasion _reason;
     private GuestId _invitorId;
     private VeaEventId _veaEventId;
 
-    private RequestToJoin(StatusType statusType, Reasion reason , GuestId invitorId, VeaEventId veaEventId)
+    private RequestToJoin(StatusType statusType, Reasion reason, GuestId invitorId, VeaEventId veaEventId)
     {
         _statusType = statusType;
         _reason = reason;

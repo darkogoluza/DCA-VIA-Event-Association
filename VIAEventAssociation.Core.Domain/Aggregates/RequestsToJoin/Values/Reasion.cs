@@ -3,7 +3,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 
-public class Reasion: ValueObject
+public class Reasion : ValueObject
 {
     public string Value { get; }
 
@@ -19,7 +19,7 @@ public class Reasion: ValueObject
 
         return new Reasion(value);
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

@@ -119,7 +119,7 @@ public class EventDescriptionUnitTests
         Assert.Contains(Error.CanNotModifyActiveEvent(), newVeaEventResult.errors);
         Assert.Equal("Some description", VeaEvent._description.Value);
     }
-    
+
     [Fact]
     public void UpdateEventDescription_CancelledStatus()
     {

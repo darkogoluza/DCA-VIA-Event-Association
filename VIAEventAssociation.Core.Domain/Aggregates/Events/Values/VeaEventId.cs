@@ -3,7 +3,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 
-public class VeaEventId: ValueObject
+public class VeaEventId : ValueObject
 {
     public Guid Id { get; }
 
@@ -19,7 +19,7 @@ public class VeaEventId: ValueObject
 
         return new VeaEventId(id);
     }
-   
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Id;
