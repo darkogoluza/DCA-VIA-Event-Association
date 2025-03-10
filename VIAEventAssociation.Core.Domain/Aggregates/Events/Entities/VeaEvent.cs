@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
+﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Invitations.Entities;
 using VIAEventAssociation.Core.Domain.Common.Bases;
@@ -21,6 +20,9 @@ public class VeaEvent : AggregateRoot
     private Location _location;
     private IList<Guest> _guests;
     private IList<Invitation> _invitations;
+
+    private TimeSpan _oneAM = new TimeSpan(1, 0, 0);
+    private TimeSpan _eightAM = new TimeSpan(8, 0, 0);
 
     private VeaEvent(VeaEventId id, Title title, Description description, DateTime startDateTime, DateTime endDateTime,
         bool visibility, MaxNoOfGuests maxNoOfGuests, EventStatusType eventStatusType) : base(id.Id)
@@ -48,12 +50,12 @@ public class VeaEvent : AggregateRoot
         if (eventIdResult.isFailure)
             errors.AddRange(eventIdResult.errors);
 
-
         if (errors.Any())
             return errors.ToArray();
 
         var veaEvent = new VeaEvent(eventIdResult.payload, title, description,
             startDateTime, endDateTime, false, maxNoOfGuestsResult.payload, EventStatusType.Draft);
+
         return veaEvent;
     }
 
@@ -66,9 +68,12 @@ public class VeaEvent : AggregateRoot
             return Error.CanNotModifyCancelledEvent();
 
         if (Equals(_eventStatusType, EventStatusType.Draft) || Equals(_eventStatusType, EventStatusType.Ready))
+        {
             _title = title;
+            return Result<None>.Success();
+        }
 
-        return Result<None>.Success();
+        return Result<None>.Failure();
     }
 
     public Result<None> UpdateDescription(Description description)
@@ -80,19 +85,57 @@ public class VeaEvent : AggregateRoot
             return Error.CanNotModifyCancelledEvent();
 
         if (Equals(_eventStatusType, EventStatusType.Draft) || Equals(_eventStatusType, EventStatusType.Ready))
+        {
             _description = description;
+            return Result<None>.Success();
+        }
 
-        return Result<None>.Success();
+        return Result<None>.Failure();
     }
+    // TODO: combine the two methods into one!
 
-    public Result<VeaEvent> UpdateStartDateTime(DateTime startDateTime)
+    public Result<None> UpdateStarEndDateTime(DateTime startDateTime, DateTime endDateTime)
     {
-        throw new NotImplementedException();
-    }
+        IList<Error> errors = new List<Error>();
 
-    public Result<VeaEvent> UpdateEndDateTime(DateTime endDateTime)
-    {
-        throw new NotImplementedException();
+        if (Equals(_eventStatusType, EventStatusType.Active))
+            errors.Add(Error.CanNotModifyActiveEvent());
+
+        if (Equals(_eventStatusType, EventStatusType.Cancelled))
+            errors.Add(Error.CanNotModifyCancelledEvent());
+
+        if (startDateTime < _startDateTime)
+            errors.Add(Error.StartTimeInPast());
+
+        if (endDateTime < startDateTime)
+            errors.Add(Error.StartDateTimeIsBiggerThenEndDateTime());
+
+        if ((endDateTime - startDateTime).TotalHours < 1)
+            errors.Add(Error.EventDurationTooShort());
+
+        if ((endDateTime - startDateTime).TotalHours > 10)
+            errors.Add(Error.EventDurationTooLong());
+
+        if (startDateTime.TimeOfDay < _eightAM)
+            errors.Add(Error.StartTimeTooEarly());
+
+        if (startDateTime.TimeOfDay > _oneAM && endDateTime.TimeOfDay > _oneAM && endDateTime.TimeOfDay < _eightAM)
+            errors.Add(Error.EndTimeTooLate());
+
+        if (SpansBetween1And8(startDateTime, endDateTime))
+            errors.Add(Error.InvalidTimeSpan());
+
+        if (errors.Any())
+            return errors.ToArray();
+
+        if (Equals(_eventStatusType, EventStatusType.Draft) || Equals(_eventStatusType, EventStatusType.Ready))
+        {
+            _endDateTime = endDateTime;
+            _startDateTime = startDateTime;
+            return Result<None>.Success();
+        }
+
+        return Result<None>.Failure();
     }
 
     public Result<VeaEvent> SetVisibility(bool visibility)
@@ -141,5 +184,13 @@ public class VeaEvent : AggregateRoot
     public Result<None> Delete()
     {
         throw new NotImplementedException();
+    }
+
+    private bool SpansBetween1And8(DateTime start, DateTime end)
+    {
+        if (start.TimeOfDay > end.TimeOfDay)
+            return start.TimeOfDay <= _oneAM || end.TimeOfDay >= _eightAM;
+
+        return start.TimeOfDay < _eightAM && end.TimeOfDay > _oneAM;
     }
 }
