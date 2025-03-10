@@ -11,11 +11,23 @@ public class EventTitleUnitTests
 
     public EventTitleUnitTests()
     {
+        // Arrange
         var expectedTitleResult = Title.Create("Working Title");
         var expectedDescriptionResult = Description.Create("Some description");
-        DateTime start = new DateTime(2025, 3, 4, 12, 0, 0);
-        DateTime end = new DateTime(2025, 3, 4, 13, 0, 0);
-        VeaEvent = VeaEvent.Create(expectedTitleResult.payload, expectedDescriptionResult.payload, start, end).payload;
+        var expectedMaxNoOfGuestsResult = MaxNoOfGuests.Create(5);
+
+        // Act
+        VeaEvent = VeaEvent.Create().payload;
+        VeaEvent._title = expectedTitleResult.payload;
+        VeaEvent._description = expectedDescriptionResult.payload;
+        VeaEvent._startDateTime = new DateTime(2025, 3, 4, 12, 0, 0);
+        VeaEvent._endDateTime = new DateTime(2025, 3, 4, 13, 0, 0);
+        VeaEvent._visibility = false;
+        VeaEvent._maxNoOfGuests = expectedMaxNoOfGuestsResult.payload;
+
+        // Assert
+        Assert.NotEmpty(VeaEvent.VeaEventId.Id.ToString());
+        Assert.Equal(EventStatusType.Draft, VeaEvent._eventStatusType);
     }
 
     [Theory]
@@ -33,7 +45,7 @@ public class EventTitleUnitTests
         // Assert
         Assert.True(newTitleResult.isSuccess);
         Assert.True(newVeaEventResult.isSuccess);
-        Assert.Equal(newTitle, VeaEvent._title.Value);
+        Assert.Equal(newTitle, VeaEvent._title?.Value);
         Assert.Equal(EventStatusType.Draft, VeaEvent._eventStatusType);
     }
 
@@ -45,15 +57,16 @@ public class EventTitleUnitTests
     {
         // Arrange
         var newTitleResult = Title.Create(newTitle);
+        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
         // Act
-        VeaEvent.Readie();
+        VeaEvent.Readie(CurrentDateTimeMock);
         var newVeaEventResult = VeaEvent.UpdateTitle(newTitleResult.payload);
 
         // Assert
         Assert.True(newTitleResult.isSuccess);
         Assert.True(newVeaEventResult.isSuccess);
-        Assert.Equal(newTitle, VeaEvent._title.Value);
+        Assert.Equal(newTitle, VeaEvent._title?.Value);
         Assert.Equal(EventStatusType.Ready, VeaEvent._eventStatusType);
     }
 
@@ -129,7 +142,7 @@ public class EventTitleUnitTests
         Assert.True(newTitleResult.isSuccess);
         Assert.True(newVeaEventResult.isFailure);
         Assert.Contains(Error.CanNotModifyActiveEvent(), newVeaEventResult.errors);
-        Assert.Equal("Working Title", VeaEvent._title.Value);
+        Assert.Equal("Working Title", VeaEvent._title?.Value);
     }
 
     [Fact]
@@ -146,6 +159,6 @@ public class EventTitleUnitTests
         Assert.True(newTitleResult.isSuccess);
         Assert.True(newVeaEventResult.isFailure);
         Assert.Contains(Error.CanNotModifyCancelledEvent(), newVeaEventResult.errors);
-        Assert.Equal("Working Title", VeaEvent._title.Value);
+        Assert.Equal("Working Title", VeaEvent._title?.Value);
     }
 }

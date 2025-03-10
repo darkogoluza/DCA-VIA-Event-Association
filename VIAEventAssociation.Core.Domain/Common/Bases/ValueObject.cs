@@ -23,12 +23,12 @@ public abstract class ValueObject
             .Aggregate((x, y) => x ^ y);
     }
 
-    public static bool operator ==(ValueObject left, ValueObject right)
+    public static bool operator ==(ValueObject? left, ValueObject? right)
     {
         return Equals(left, right);
     }
 
-    public static bool operator !=(ValueObject left, ValueObject right)
+    public static bool operator !=(ValueObject? left, ValueObject? right)
     {
         return !Equals(left, right);
     }

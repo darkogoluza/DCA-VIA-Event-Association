@@ -14,11 +14,23 @@ public class EventDescriptionUnitTests
 
     public EventDescriptionUnitTests()
     {
+        // Arrange
         var expectedTitleResult = Title.Create("Working Title");
         var expectedDescriptionResult = Description.Create("Some description");
-        DateTime start = new DateTime(2025, 3, 4, 12, 0, 0);
-        DateTime end = new DateTime(2025, 3, 4, 13, 0, 0);
-        VeaEvent = VeaEvent.Create(expectedTitleResult.payload, expectedDescriptionResult.payload, start, end).payload;
+        var expectedMaxNoOfGuestsResult = MaxNoOfGuests.Create(5);
+
+        // Act
+        VeaEvent = VeaEvent.Create().payload;
+        VeaEvent._title = expectedTitleResult.payload;
+        VeaEvent._description = expectedDescriptionResult.payload;
+        VeaEvent._startDateTime = new DateTime(2025, 3, 4, 12, 0, 0);
+        VeaEvent._endDateTime = new DateTime(2025, 3, 4, 13, 0, 0);
+        VeaEvent._visibility = false;
+        VeaEvent._maxNoOfGuests = expectedMaxNoOfGuestsResult.payload;
+
+        // Assert
+        Assert.NotEmpty(VeaEvent.VeaEventId.Id.ToString());
+        Assert.Equal(EventStatusType.Draft, VeaEvent._eventStatusType);
     }
 
     [Fact]
@@ -60,8 +72,10 @@ public class EventDescriptionUnitTests
         // Arrange
         var newDescriptionResult = Description.Create(descriptionConst);
 
+        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
+
         // Act
-        VeaEvent.Readie();
+        VeaEvent.Readie(CurrentDateTimeMock);
         var newVeaEventResult = VeaEvent.UpdateDescription(newDescriptionResult.payload);
 
         // Assert
@@ -78,14 +92,16 @@ public class EventDescriptionUnitTests
         var newDescription = "";
         var newDescriptionResult = Description.Create(newDescription);
 
+        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
+
         // Act
-        VeaEvent.Readie();
+        VeaEvent.Readie(CurrentDateTimeMock);
         var newVeaEventResult = VeaEvent.UpdateDescription(newDescriptionResult.payload);
 
         // Assert
         Assert.True(newDescriptionResult.isSuccess);
         Assert.True(newVeaEventResult.isSuccess);
-        Assert.Equal(newDescription, VeaEvent._description.Value);
+        Assert.Equal(newDescription, VeaEvent._description?.Value);
         Assert.Equal(EventStatusType.Ready, VeaEvent._eventStatusType);
     }
 
@@ -117,7 +133,7 @@ public class EventDescriptionUnitTests
         Assert.True(newDescriptionResult.isSuccess);
         Assert.True(newVeaEventResult.isFailure);
         Assert.Contains(Error.CanNotModifyActiveEvent(), newVeaEventResult.errors);
-        Assert.Equal("Some description", VeaEvent._description.Value);
+        Assert.Equal("Some description", VeaEvent._description?.Value);
     }
 
     [Fact]

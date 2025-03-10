@@ -8,21 +8,25 @@ namespace UnitTests.Features.Event.UpdateStartAndDateEndTime;
 
 public class EventStartEndDateTimeUnitTests
 {
-    private readonly ITestOutputHelper _testOutputHelper;
     private readonly VeaEvent VeaEvent;
     private readonly DateTime DefaultStartDateTime = new DateTime(2023, 3, 4, 12, 0, 0);
     private readonly DateTime DefaultEndDateTime = new DateTime(2023, 3, 4, 14, 0, 0);
 
-    public EventStartEndDateTimeUnitTests(ITestOutputHelper testOutputHelper)
+    public EventStartEndDateTimeUnitTests()
     {
-        _testOutputHelper = testOutputHelper;
         // Arrange
         var expectedTitleResult = Title.Create("Working Title");
         var expectedDescriptionResult = Description.Create("Some description");
+        var expectedMaxNoOfGuestsResult = MaxNoOfGuests.Create(5);
 
         // Act
-        VeaEvent = VeaEvent.Create(expectedTitleResult.payload, expectedDescriptionResult.payload, DefaultStartDateTime,
-            DefaultEndDateTime).payload;
+        VeaEvent = VeaEvent.Create().payload;
+        VeaEvent._title = expectedTitleResult.payload;
+        VeaEvent._description = expectedDescriptionResult.payload;
+        VeaEvent._startDateTime = DefaultStartDateTime;
+        VeaEvent._endDateTime = DefaultEndDateTime;
+        VeaEvent._visibility = false;
+        VeaEvent._maxNoOfGuests = expectedMaxNoOfGuestsResult.payload;
 
         // Assert
         Assert.NotEmpty(VeaEvent.VeaEventId.Id.ToString());
@@ -58,7 +62,9 @@ public class EventStartEndDateTimeUnitTests
         var updateStartEndDateTimeResult = VeaEvent.UpdateStarEndDateTime(start, end);
 
         // Assert
-        _testOutputHelper.WriteLine(updateStartEndDateTimeResult.ToString());
+        Assert.True(updateStartEndDateTimeResult.isSuccess);
+        Assert.Equal(start, VeaEvent._startDateTime);
+        Assert.Equal(end, VeaEvent._endDateTime);
     }
 
     [Theory]
@@ -69,10 +75,10 @@ public class EventStartEndDateTimeUnitTests
     public void EventUpdateStartEndDateTime_ReadyState(DateTime start, DateTime end)
     {
         // Arrange
-        // None
+        DateTime CurrentDateTimeMock() => DefaultStartDateTime.AddDays(-1);
 
         // Act
-        var updateToReadyState = VeaEvent.Readie();
+        var updateToReadyState = VeaEvent.Readie(CurrentDateTimeMock);
         var updateStartEndDateTimeResult = VeaEvent.UpdateStarEndDateTime(start, end);
 
         // Assert

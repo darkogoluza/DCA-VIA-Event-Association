@@ -3,6 +3,7 @@ using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Invitations.Entities;
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
+using VIAEventAssociation.Core.Domain.Contracts;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
@@ -10,12 +11,12 @@ namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 public class VeaEvent : AggregateRoot
 {
     public VeaEventId VeaEventId { get; }
-    internal Title _title;
-    internal Description _description;
-    internal DateTime _startDateTime;
-    internal DateTime _endDateTime;
-    internal bool _visibility;
-    internal MaxNoOfGuests _maxNoOfGuests;
+    internal Title? _title;
+    internal Description? _description;
+    internal DateTime? _startDateTime;
+    internal DateTime? _endDateTime;
+    internal bool? _visibility;
+    internal MaxNoOfGuests? _maxNoOfGuests;
     internal EventStatusType _eventStatusType;
     private Location _location;
     private IList<Guest> _guests;
@@ -24,37 +25,19 @@ public class VeaEvent : AggregateRoot
     private TimeSpan _oneAM = new TimeSpan(1, 0, 0);
     private TimeSpan _eightAM = new TimeSpan(8, 0, 0);
 
-    private VeaEvent(VeaEventId id, Title title, Description description, DateTime startDateTime, DateTime endDateTime,
-        bool visibility, MaxNoOfGuests maxNoOfGuests, EventStatusType eventStatusType) : base(id.Id)
+    private VeaEvent(VeaEventId id, EventStatusType eventStatusType) : base(id.Id)
     {
         VeaEventId = id;
-        _title = title;
-        _description = description;
-        _startDateTime = startDateTime;
-        _endDateTime = endDateTime;
-        _visibility = visibility;
-        _maxNoOfGuests = maxNoOfGuests;
         _eventStatusType = eventStatusType;
         _guests = new List<Guest>();
         _invitations = new List<Invitation>();
     }
 
-    public static Result<VeaEvent> Create(Title title, Description description, DateTime startDateTime,
-        DateTime endDateTime)
+    public static Result<VeaEvent> Create()
     {
-        var maxNoOfGuestsResult = MaxNoOfGuests.Create(5);
         var eventIdResult = VeaEventId.Create(Guid.NewGuid());
 
-        var errors = new List<Error>();
-
-        if (eventIdResult.isFailure)
-            errors.AddRange(eventIdResult.errors);
-
-        if (errors.Any())
-            return errors.ToArray();
-
-        var veaEvent = new VeaEvent(eventIdResult.payload, title, description,
-            startDateTime, endDateTime, false, maxNoOfGuestsResult.payload, EventStatusType.Draft);
+        var veaEvent = new VeaEvent(eventIdResult.payload, EventStatusType.Draft);
 
         return veaEvent;
     }
@@ -174,15 +157,46 @@ public class VeaEvent : AggregateRoot
             !Equals(_eventStatusType, EventStatusType.Active))
             return Result<None>.Failure();
 
-        if (_maxNoOfGuests.Value > maxNoOfGuests.Value)
+        if (_maxNoOfGuests != null && _maxNoOfGuests.Value > maxNoOfGuests.Value)
             return Error.CanNotReduceMaxNoOfGuestsOnActiveEvent();
 
         _maxNoOfGuests = maxNoOfGuests;
         return Result<None>.Success();
     }
 
-    public Result<None> Readie()
+    public Result<None> Readie(CurrentDateTime? currentDateTime = null)
     {
+        if (currentDateTime == null)
+            currentDateTime = () => DateTime.Now;
+
+        IList<Error> errors = new List<Error>();
+
+        if (_title == null)
+            errors.Add(Error.TitleNotSet());
+
+        if (_description == null)
+            errors.Add(Error.DescriptionNotSet());
+
+        if (_maxNoOfGuests == null)
+            errors.Add(Error.MaximumNumberOfGuestsIsNotSet());
+
+        if (_visibility == null)
+            errors.Add(Error.VisibilityIsNotSet());
+
+        if (_startDateTime == null || _endDateTime == null)
+            errors.Add(Error.TimesAreNotSet());
+
+        if (Equals(_eventStatusType, EventStatusType.Cancelled))
+            errors.Add(Error.CanNotModifyCancelledEvent());
+
+        DateTime now = currentDateTime();
+        if (now > _startDateTime)
+            errors.Add(Error.EventIsInPast());
+
+
+        if (errors.Any())
+            return errors.ToArray();
+
         _eventStatusType = EventStatusType.Ready;
         return Result<None>.Success();
     }

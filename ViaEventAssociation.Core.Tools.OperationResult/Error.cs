@@ -62,6 +62,12 @@ public class Error
 
     public static Error EventDurationTooLong() =>
         BadInput("The event duration is too long, expected duration between 1h and 10h.");
+    public static Error TitleNotSet() => BadInput("The title is empty.");
+    public static Error DescriptionNotSet() => BadInput("The description is empty.");
+    public static Error TimesAreNotSet() => BadInput("The start and end date time is empty.");
+    public static Error MaximumNumberOfGuestsIsNotSet() => BadInput("The maximum number of guests is not defined.");
+    public static Error VisibilityIsNotSet() => BadInput("The visibility has not been set.");
+    public static Error EventIsInPast() => BadInput("Event is in the past.");
 
     // Start and end DateTime
     public static Error StartDateTimeIsBiggerThenEndDateTime() =>
