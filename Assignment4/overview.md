@@ -58,3 +58,12 @@
   * [X] S2
   * [X] F1
   * [X] F2
+* [ ] UC7
+  * [X] S1
+  * [X] S2
+  * [X] S3
+  * [X] F1
+  * [X] F2
+  * [ ] F3 Depends on UC16-20
+  * [X] F4
+  * [X] F5

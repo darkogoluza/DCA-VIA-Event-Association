@@ -165,9 +165,20 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Failure();
     }
 
-    public Result<VeaEvent> SetMaxNoOfGuests(MaxNoOfGuests maxNoOfGuests)
+    public Result<None> SetMaxNoOfGuests(MaxNoOfGuests maxNoOfGuests)
     {
-        throw new NotImplementedException();
+        if (Equals(_eventStatusType, EventStatusType.Cancelled))
+            return Error.CanNotModifyCancelledEvent();
+
+        if (!Equals(_eventStatusType, EventStatusType.Draft) && !Equals(_eventStatusType, EventStatusType.Ready) &&
+            !Equals(_eventStatusType, EventStatusType.Active))
+            return Result<None>.Failure();
+
+        if (_maxNoOfGuests.Value > maxNoOfGuests.Value)
+            return Error.CanNotReduceMaxNoOfGuestsOnActiveEvent();
+
+        _maxNoOfGuests = maxNoOfGuests;
+        return Result<None>.Success();
     }
 
     public Result<None> Readie()
