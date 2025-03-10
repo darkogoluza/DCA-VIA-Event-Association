@@ -4,11 +4,11 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.Event.UpdateVisibility;
 
-public class EventVisibilityUnitTests
+public class EventVisibilityPublicUnitTests
 {
     private readonly VeaEvent VeaEvent;
 
-    public EventVisibilityUnitTests()
+    public EventVisibilityPublicUnitTests()
     {
         var expectedTitleResult = Title.Create("Working Title");
         var expectedDescriptionResult = Description.Create("Some description");
