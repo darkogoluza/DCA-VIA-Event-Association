@@ -23,7 +23,16 @@ public class Result<T>
     }
 
     public static Result<T> Success(T value) => new Result<T>(value, new List<Error>());
-    public static Result<T> Failure(params Error[] errors) => new Result<T>(default, errors.ToList());
+
+    public static Result<T> Failure(params Error[] errors)
+    {
+        if (errors.Length == 0)
+        {
+            errors = new[] { Error.Default() };
+        }
+
+        return new Result<T>(default, errors.ToList());
+    }
 
     public static Result<None> Success() => Result<None>.Success(None.Value);
 

@@ -138,9 +138,14 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Failure();
     }
 
-    public Result<VeaEvent> SetVisibility(bool visibility)
+    public Result<None> SetVisibility(bool visibility)
     {
-        throw new NotImplementedException();
+        if (!Equals(_eventStatusType, EventStatusType.Draft) && !Equals(_eventStatusType, EventStatusType.Ready) &&
+            !Equals(_eventStatusType, EventStatusType.Active))
+            return Error.CanNotModifyCancelledEvent();
+
+        _visibility = visibility;
+        return Result<None>.Success();
     }
 
     public Result<VeaEvent> SetMaxNoOfGuests(MaxNoOfGuests maxNoOfGuests)

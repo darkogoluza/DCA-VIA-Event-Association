@@ -38,6 +38,7 @@ public class Error
 
     // default http errors
     public static Error NotFound() => new Error("Not found!", 404);
+    public static Error Default() => new Error("Something went wrong!", 500);
 
     // User validation
     public static Error UserDoesNotExists(int userId) => new Error($"User with id {userId} does not exist!", 404);
