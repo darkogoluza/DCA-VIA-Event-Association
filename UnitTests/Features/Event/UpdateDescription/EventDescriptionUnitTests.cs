@@ -12,6 +12,8 @@ public class EventDescriptionUnitTests
     private readonly string descriptionConst =
         "Nullam tempor lacus nisl, eget tempus quam maximus malesuada. Morbi faucibus sed neque vitae euismod. Vestibulum non purus vel justo ornare vulputate. In a interdum enim. Maecenas sed sodales elit, sit amet venenatis orci. Suspendisse potenti";
 
+    private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
+
     public EventDescriptionUnitTests()
     {
         // Arrange
@@ -45,7 +47,7 @@ public class EventDescriptionUnitTests
         // Assert
         Assert.True(newDescriptionResult.isSuccess);
         Assert.True(newVeaEventResult.isSuccess);
-        Assert.Equal(descriptionConst, VeaEvent._description.Value);
+        Assert.Equal(descriptionConst, VeaEvent._description?.Value);
         Assert.Equal(EventStatusType.Draft, VeaEvent._eventStatusType);
     }
 
@@ -62,7 +64,7 @@ public class EventDescriptionUnitTests
         // Assert
         Assert.True(newDescriptionResult.isSuccess);
         Assert.True(newVeaEventResult.isSuccess);
-        Assert.Equal(newDescription, VeaEvent._description.Value);
+        Assert.Equal(newDescription, VeaEvent._description?.Value);
         Assert.Equal(EventStatusType.Draft, VeaEvent._eventStatusType);
     }
 
@@ -72,8 +74,6 @@ public class EventDescriptionUnitTests
         // Arrange
         var newDescriptionResult = Description.Create(descriptionConst);
 
-        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
-
         // Act
         VeaEvent.Readie(CurrentDateTimeMock);
         var newVeaEventResult = VeaEvent.UpdateDescription(newDescriptionResult.payload);
@@ -81,7 +81,7 @@ public class EventDescriptionUnitTests
         // Assert
         Assert.True(newDescriptionResult.isSuccess);
         Assert.True(newVeaEventResult.isSuccess);
-        Assert.Equal(descriptionConst, VeaEvent._description.Value);
+        Assert.Equal(descriptionConst, VeaEvent._description?.Value);
         Assert.Equal(EventStatusType.Ready, VeaEvent._eventStatusType);
     }
 
@@ -91,8 +91,6 @@ public class EventDescriptionUnitTests
         // Arrange
         var newDescription = "";
         var newDescriptionResult = Description.Create(newDescription);
-
-        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
         // Act
         VeaEvent.Readie(CurrentDateTimeMock);
@@ -126,6 +124,7 @@ public class EventDescriptionUnitTests
         var newDescriptionResult = Description.Create(descriptionConst);
 
         // Act
+        VeaEvent.Readie(CurrentDateTimeMock);
         VeaEvent.Activate();
         var newVeaEventResult = VeaEvent.UpdateDescription(newDescriptionResult.payload);
 
@@ -150,6 +149,6 @@ public class EventDescriptionUnitTests
         Assert.True(newDescriptionResult.isSuccess);
         Assert.True(newVeaEventResult.isFailure);
         Assert.Contains(Error.CanNotModifyCancelledEvent(), newVeaEventResult.errors);
-        Assert.Equal("Some description", VeaEvent._description.Value);
+        Assert.Equal("Some description", VeaEvent._description?.Value);
     }
 }

@@ -8,6 +8,7 @@ namespace UnitTests.Features.Event.UpdateTitle;
 public class EventTitleUnitTests
 {
     private readonly VeaEvent VeaEvent;
+    private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
     public EventTitleUnitTests()
     {
@@ -57,7 +58,6 @@ public class EventTitleUnitTests
     {
         // Arrange
         var newTitleResult = Title.Create(newTitle);
-        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
         // Act
         VeaEvent.Readie(CurrentDateTimeMock);
@@ -135,6 +135,7 @@ public class EventTitleUnitTests
         var newTitleResult = Title.Create("new vea event title.");
 
         // Act
+        VeaEvent.Readie(CurrentDateTimeMock);
         VeaEvent.Activate();
         var newVeaEventResult = VeaEvent.UpdateTitle(newTitleResult.payload);
 

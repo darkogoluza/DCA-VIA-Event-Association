@@ -8,6 +8,7 @@ namespace UnitTests.Features.Event.UpdateVisibility;
 public class EventVisibilityPrivateUnitTests
 {
     private readonly VeaEvent VeaEvent;
+    private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
     public EventVisibilityPrivateUnitTests()
     {
@@ -48,7 +49,6 @@ public class EventVisibilityPrivateUnitTests
     public void MakeEventPrivate_ReadyState()
     {
         // Arrange
-        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
         VeaEvent.Readie(CurrentDateTimeMock);
 
         // Act
@@ -77,7 +77,6 @@ public class EventVisibilityPrivateUnitTests
     public void MakeEventPrivate_ReadyStateAndPublic()
     {
         // Arrange
-        DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
         VeaEvent.Readie(CurrentDateTimeMock);
         VeaEvent.SetVisibility(true);
 
@@ -110,6 +109,7 @@ public class EventVisibilityPrivateUnitTests
     {
         // Arrange
         VeaEvent.SetVisibility(true);
+        VeaEvent.Readie(CurrentDateTimeMock);
         VeaEvent.Activate();
 
         // Act

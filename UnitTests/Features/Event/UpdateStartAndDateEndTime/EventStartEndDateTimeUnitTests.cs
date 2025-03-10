@@ -11,6 +11,7 @@ public class EventStartEndDateTimeUnitTests
     private readonly VeaEvent VeaEvent;
     private readonly DateTime DefaultStartDateTime = new DateTime(2023, 3, 4, 12, 0, 0);
     private readonly DateTime DefaultEndDateTime = new DateTime(2023, 3, 4, 14, 0, 0);
+    private DateTime CurrentDateTimeMock() => DefaultStartDateTime.AddDays(-1);
 
     public EventStartEndDateTimeUnitTests()
     {
@@ -75,7 +76,6 @@ public class EventStartEndDateTimeUnitTests
     public void EventUpdateStartEndDateTime_ReadyState(DateTime start, DateTime end)
     {
         // Arrange
-        DateTime CurrentDateTimeMock() => DefaultStartDateTime.AddDays(-1);
 
         // Act
         var updateToReadyState = VeaEvent.Readie(CurrentDateTimeMock);
@@ -185,6 +185,7 @@ public class EventStartEndDateTimeUnitTests
     public void EventUpdateStartEndDateTime_ActiveState()
     {
         // Arrange
+        VeaEvent.Readie(CurrentDateTimeMock);
         VeaEvent.Activate();
 
         // Act

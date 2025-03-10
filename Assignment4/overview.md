@@ -67,9 +67,15 @@
   * [ ] F3 Depends on UC16-20
   * [X] F4
   * [X] F5
-* UC8
+* [X] UC8
   * [X] S1
   * [X] F1
   * [X] F2
   * [X] F3
   * [X] F4
+* [ ] UC9
+  * [X] S1
+  * [X] S2
+  * [X] S3
+  * [ ] F1
+  * [ ] F2

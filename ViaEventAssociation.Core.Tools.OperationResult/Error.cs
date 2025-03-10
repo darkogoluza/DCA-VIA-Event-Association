@@ -68,6 +68,7 @@ public class Error
     public static Error MaximumNumberOfGuestsIsNotSet() => BadInput("The maximum number of guests is not defined.");
     public static Error VisibilityIsNotSet() => BadInput("The visibility has not been set.");
     public static Error EventIsInPast() => BadInput("Event is in the past.");
+    public static Error CanNotActivateEventThatIsNotReady() => new Error("Can not activate an event that has not been readied.", 403);
 
     // Start and end DateTime
     public static Error StartDateTimeIsBiggerThenEndDateTime() =>

@@ -203,8 +203,16 @@ public class VeaEvent : AggregateRoot
 
     public Result<None> Activate()
     {
-        _eventStatusType = EventStatusType.Active;
-        return Result<None>.Success();
+        if (Equals(EventStatusType.Ready, _eventStatusType) || Equals(EventStatusType.Active, _eventStatusType))
+        {
+            _eventStatusType = EventStatusType.Active;
+            return Result<None>.Success();
+        }
+
+        if (Equals(EventStatusType.Cancelled, _eventStatusType))
+            return Error.CanNotModifyCancelledEvent();
+
+        return Error.CanNotActivateEventThatIsNotReady();
     }
 
     public Result<None> AcceptInvitation(Guest guest, Invitation invitation)
