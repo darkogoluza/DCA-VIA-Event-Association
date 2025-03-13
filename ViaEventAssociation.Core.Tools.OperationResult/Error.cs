@@ -62,13 +62,16 @@ public class Error
 
     public static Error EventDurationTooLong() =>
         BadInput("The event duration is too long, expected duration between 1h and 10h.");
+
     public static Error TitleNotSet() => BadInput("The title is empty.");
     public static Error DescriptionNotSet() => BadInput("The description is empty.");
     public static Error TimesAreNotSet() => BadInput("The start and end date time is empty.");
     public static Error MaximumNumberOfGuestsIsNotSet() => BadInput("The maximum number of guests is not defined.");
     public static Error VisibilityIsNotSet() => BadInput("The visibility has not been set.");
     public static Error EventIsInPast() => BadInput("Event is in the past.");
-    public static Error CanNotActivateEventThatIsNotReady() => new Error("Can not activate an event that has not been readied.", 403);
+
+    public static Error CanNotActivateEventThatIsNotReady() =>
+        new Error("Can not activate an event that has not been readied.", 403);
 
     // Start and end DateTime
     public static Error StartDateTimeIsBiggerThenEndDateTime() =>
@@ -87,8 +90,21 @@ public class Error
     // Max number of guests
     public static Error CanNotReduceMaxNoOfGuestsOnActiveEvent() =>
         new Error("Can not set lower amount of guests on an active event", 403);
+
     public static Error MaxNoOfGuestsTooSmall() =>
         BadInput("Maximum number of guests is too small, must be higher then 5");
+
     public static Error MaxNoOfGuestsTooLarge() =>
         BadInput("Maximum number of guests is too large, must be lower then 50");
+
+    // Email
+    public static Error WrongEmailDomain() => BadInput("Only people with a VIA mail can register.");
+
+    public static Error WrongEmailFormat() => BadInput("The emails is of a wrong format.");
+
+    // First Name
+    public static Error WrongFirstNameFormat() => BadInput("First name is ofa wrong format.");
+
+    // Last Name
+    public static Error WrongLastNameFormat() => BadInput("Last name is ofa wrong format.");
 }

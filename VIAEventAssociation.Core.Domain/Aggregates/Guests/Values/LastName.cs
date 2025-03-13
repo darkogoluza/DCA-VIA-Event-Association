@@ -1,4 +1,5 @@
-﻿using VIAEventAssociation.Core.Domain.Common.Bases;
+﻿using System.Text.RegularExpressions;
+using VIAEventAssociation.Core.Domain.Common.Bases;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
@@ -14,8 +15,10 @@ public class LastName : ValueObject
 
     public static Result<LastName> Create(string value)
     {
-        if (string.IsNullOrWhiteSpace(value))
-            return Error.BadInput("Last name cannot be empty.");
+        Regex regex = new Regex(@"^[A-Z][a-z]{1,24}$");
+        Match match = regex.Match(value);
+        if (!match.Success)
+            return Error.WrongLastNameFormat();
 
         return new LastName(value);
     }

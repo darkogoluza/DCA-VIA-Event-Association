@@ -2,7 +2,7 @@
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
-namespace VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
+namespace VIAEventAssociation.Core.Domain.Common.Values;
 
 public class Email : ValueObject
 {
@@ -16,13 +16,13 @@ public class Email : ValueObject
     public static Result<Email> Create(string value)
     {
 
-        Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        Regex regex = new Regex(@"^([a-z\-]{3,6})@([a-z\-]+)((\.[a-z]{2,3})+)$");
         Match match = regex.Match(value);
         if (!match.Success)
-            return Error.BadInput("Email input is invalid.");
+            return Error.WrongEmailFormat();
 
         if (!value.Contains("@via.dk", StringComparison.OrdinalIgnoreCase))
-            return Error.BadInput("Email is not VIA email");
+            return Error.WrongEmailDomain();
 
         return new Email(value);
     }

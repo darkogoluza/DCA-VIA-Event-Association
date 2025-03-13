@@ -73,9 +73,18 @@
   * [X] F2
   * [X] F3
   * [X] F4
-* [ ] UC9
+* [X] UC9
   * [X] S1
   * [X] S2
   * [X] S3
-  * [ ] F1
-  * [ ] F2
+  * [X] F1
+  * [X] F2
+* [ ] UC10
+  * [X] S1
+  * [X] F1
+  * [X] F2
+  * [X] F3
+  * [X] F4
+  * [ ] F5 Depends on a repository
+  * [X] F6 
+  * [X] F7

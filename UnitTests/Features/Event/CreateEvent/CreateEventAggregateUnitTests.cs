@@ -1,7 +1,4 @@
 ﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
-using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
-using VIAEventAssociation.Core.Domain.Common.Values;
-using Xunit.Abstractions;
 
 namespace UnitTests.Features.Event.CreateEvent;
 
