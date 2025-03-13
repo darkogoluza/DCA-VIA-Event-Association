@@ -4,7 +4,6 @@ using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Invitations.Entities;
 using VIAEventAssociation.Core.Domain.Common.Values;
-using VIAEventAssociation.Core.Domain.Services;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.GuestTests.GuestParticipatesPublicEvent;
@@ -13,14 +12,11 @@ public class GuestParticipatesPublicEventUnitTests
 {
     private readonly VeaEvent VeaEvent;
     private readonly Guest Guest;
-    private readonly GuestInviteService _guestInviteService;
 
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
     public GuestParticipatesPublicEventUnitTests()
     {
-        _guestInviteService = new GuestInviteService();
-
         // Arrange
         var expectedTitleResult = Title.Create("Working Title");
         var expectedDescriptionResult = Description.Create("Some description");

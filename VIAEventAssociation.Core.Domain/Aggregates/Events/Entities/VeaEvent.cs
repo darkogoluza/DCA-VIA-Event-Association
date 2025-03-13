@@ -1,5 +1,6 @@
 ﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
+using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Invitations.Entities;
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
@@ -236,6 +237,16 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Success();
     }
 
+    public Result<None> CancelsParticipate(GuestId guestId)
+    {
+        Guest? guestToRemove = _guests.FirstOrDefault(g => g.GuestId == guestId);
+        if (guestToRemove != null)
+        {
+            _guests.Remove(guestToRemove);
+        }
+
+        return Result<None>.Success();
+    }
 
     public Result<None> AcceptInvitation(Guest guest, Invitation invitation)
     {
