@@ -1,5 +1,4 @@
-﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
-using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
+﻿using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
 using ViaEventAssociation.Core.Tools.OperationResult;

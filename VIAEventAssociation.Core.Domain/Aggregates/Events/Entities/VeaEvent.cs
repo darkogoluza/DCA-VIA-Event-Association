@@ -19,8 +19,8 @@ public class VeaEvent : AggregateRoot
     internal MaxNoOfGuests? _maxNoOfGuests;
     internal EventStatusType _eventStatusType;
     private Location _location;
-    private IList<Guest> _guests;
-    private IList<Invitation> _invitations;
+    internal IList<Guest> _guests;
+    internal IList<Invitation> _invitations;
 
     private TimeSpan _oneAM = new TimeSpan(1, 0, 0);
     private TimeSpan _eightAM = new TimeSpan(8, 0, 0);
@@ -214,6 +214,28 @@ public class VeaEvent : AggregateRoot
 
         return Error.CanNotActivateEventThatIsNotReady();
     }
+
+    public Result<None> Participate(Guest guest)
+    {
+        if (Equals(EventStatusType.Draft, _eventStatusType))
+            return Error.CanNotJoinDraftEvent();
+
+        if (Equals(EventStatusType.Cancelled, _eventStatusType))
+            return Error.CanNotJoinCancelledEvent();
+
+        if (_visibility == false)
+            return Error.CanNotJoinPrivateEvent();
+
+        if ((_guests.Count + _invitations.Count) >= _maxNoOfGuests?.Value)
+            return Error.CanNotJoinEventIsFull();
+
+        if (_guests.FirstOrDefault(g => g.GuestId == guest.GuestId) != null)
+            return Error.GuestIsAlreadyParticipating();
+
+        _guests.Add(guest);
+        return Result<None>.Success();
+    }
+
 
     public Result<None> AcceptInvitation(Guest guest, Invitation invitation)
     {

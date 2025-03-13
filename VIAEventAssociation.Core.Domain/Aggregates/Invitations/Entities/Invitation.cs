@@ -1,6 +1,4 @@
-﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
-using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
-using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
+﻿using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
 using ViaEventAssociation.Core.Tools.OperationResult;
@@ -20,6 +18,6 @@ public class Invitation : AggregateRoot
 
     public static Result<Invitation> Create(StatusType statusType, GuestId inviteeId)
     {
-        throw new NotImplementedException();
+        return new Invitation(statusType, inviteeId);
     }
 }

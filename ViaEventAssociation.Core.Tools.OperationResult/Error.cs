@@ -56,22 +56,23 @@ public class Error
     // Event
     public static Error CanNotModifyActiveEvent() => new Error("Can not modify an active event.", 403);
     public static Error CanNotModifyCancelledEvent() => new Error("Can not modify a cancelled event.", 403);
-
     public static Error EventDurationTooShort() =>
         BadInput("The event duration is too short, expected duration between 1h and 10h.");
-
     public static Error EventDurationTooLong() =>
         BadInput("The event duration is too long, expected duration between 1h and 10h.");
-
     public static Error TitleNotSet() => BadInput("The title is empty.");
     public static Error DescriptionNotSet() => BadInput("The description is empty.");
     public static Error TimesAreNotSet() => BadInput("The start and end date time is empty.");
     public static Error MaximumNumberOfGuestsIsNotSet() => BadInput("The maximum number of guests is not defined.");
     public static Error VisibilityIsNotSet() => BadInput("The visibility has not been set.");
     public static Error EventIsInPast() => BadInput("Event is in the past.");
-
     public static Error CanNotActivateEventThatIsNotReady() =>
         new Error("Can not activate an event that has not been readied.", 403);
+    public static Error CanNotJoinDraftEvent() => BadInput("Guest can not join an event that is in draft state.");
+    public static Error CanNotJoinCancelledEvent() => BadInput("Guest can not join an event that is in draft state.");
+    public static Error CanNotJoinEventIsFull() => BadInput("Guest can not join an event that is full.");
+    public static Error GuestIsAlreadyParticipating() => BadInput("Guest can not join the event twice.");
+    public static Error CanNotJoinPrivateEvent() => BadInput("Guest can not join an private event.");
 
     // Start and end DateTime
     public static Error StartDateTimeIsBiggerThenEndDateTime() =>
