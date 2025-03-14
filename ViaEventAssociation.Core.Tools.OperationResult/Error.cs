@@ -56,23 +56,35 @@ public class Error
     // Event
     public static Error CanNotModifyActiveEvent() => new Error("Can not modify an active event.", 403);
     public static Error CanNotModifyCancelledEvent() => new Error("Can not modify a cancelled event.", 403);
+
     public static Error EventDurationTooShort() =>
         BadInput("The event duration is too short, expected duration between 1h and 10h.");
+
     public static Error EventDurationTooLong() =>
         BadInput("The event duration is too long, expected duration between 1h and 10h.");
+
     public static Error TitleNotSet() => BadInput("The title is empty.");
     public static Error DescriptionNotSet() => BadInput("The description is empty.");
     public static Error TimesAreNotSet() => BadInput("The start and end date time is empty.");
     public static Error MaximumNumberOfGuestsIsNotSet() => BadInput("The maximum number of guests is not defined.");
     public static Error VisibilityIsNotSet() => BadInput("The visibility has not been set.");
     public static Error EventIsInPast() => BadInput("Event is in the past.");
+
     public static Error CanNotActivateEventThatIsNotReady() =>
         new Error("Can not activate an event that has not been readied.", 403);
-    public static Error CanNotJoinDraftEvent() => BadInput("Guest can not join an event that is in draft state.");
-    public static Error CanNotJoinCancelledEvent() => BadInput("Guest can not join an event that is in draft state.");
-    public static Error CanNotJoinEventIsFull() => BadInput("Guest can not join an event that is full.");
-    public static Error GuestIsAlreadyParticipating() => BadInput("Guest can not join the event twice.");
-    public static Error CanNotJoinPrivateEvent() => BadInput("Guest can not join an private event.");
+
+    public static Error CanNotJoinDraftEvent() => new Error("Guest can not join an event that is in draft state.", 403);
+
+    public static Error CanNotJoinCancelledEvent() =>
+        new Error("Guest can not join an event that is in draft state.", 403);
+
+    public static Error CanNotJoinEventIsFull() => new Error("Guest can not join an event that is full.", 403);
+    public static Error GuestIsAlreadyParticipating() => new Error("Guest can not join the event twice.", 403);
+    public static Error CanNotJoinPrivateEvent() => new Error("Guest can not join an private event.", 403);
+    public static Error CanNotInviteToDraftEvent() => new Error("Can not invite a guest to a draft event", 403);
+    public static Error CanNotInviteToCancelledEvent() => new Error("Can not invite a guest to a cancelled event", 403);
+    public static Error CanNotInviteEventIsFull() => new Error("Can not invite a guest to an event that is full.", 403);
+    public static Error GuestAlreadyInvited() => new Error("Can not invite a guest twice.", 403);
 
     // Start and end DateTime
     public static Error StartDateTimeIsBiggerThenEndDateTime() =>

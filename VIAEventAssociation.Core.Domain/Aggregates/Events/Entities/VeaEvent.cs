@@ -248,6 +248,27 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Success();
     }
 
+    public Result<None> Invite(Invitation invitation)
+    {
+        if (Equals(EventStatusType.Draft, _eventStatusType))
+            return Error.CanNotInviteToDraftEvent();
+
+        if (Equals(EventStatusType.Cancelled, _eventStatusType))
+            return Error.CanNotInviteToCancelledEvent();
+
+        if ((_guests.Count + _invitations.Count) >= _maxNoOfGuests?.Value)
+            return Error.CanNotInviteEventIsFull();
+
+        if (_invitations.FirstOrDefault(i => i._inviteeId == invitation._inviteeId) != null)
+            return Error.GuestAlreadyInvited();
+
+        if (_guests.FirstOrDefault(g => g.GuestId == invitation._inviteeId) != null)
+            return Error.GuestIsAlreadyParticipating();
+
+        _invitations.Add(invitation);
+        return Result<None>.Success();
+    }
+
     public Result<None> AcceptInvitation(Guest guest, Invitation invitation)
     {
         throw new NotImplementedException();

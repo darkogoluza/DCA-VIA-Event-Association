@@ -7,8 +7,8 @@ namespace VIAEventAssociation.Core.Domain.Aggregates.Invitations.Entities;
 
 public class Invitation : AggregateRoot
 {
-    private StatusType _statusType;
-    private GuestId _inviteeId;
+    internal StatusType _statusType;
+    internal GuestId _inviteeId;
 
     private Invitation(StatusType statusType, GuestId inviteeId)
     {
