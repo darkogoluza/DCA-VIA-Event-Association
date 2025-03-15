@@ -237,8 +237,15 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Success();
     }
 
-    public Result<None> CancelsParticipate(GuestId guestId)
+    public Result<None> CancelsParticipate(GuestId guestId, CurrentDateTime? currentDateTime = null)
     {
+        if (currentDateTime == null)
+            currentDateTime = () => DateTime.Now;
+
+        DateTime now = currentDateTime();
+        if (now > _startDateTime)
+            return Error.EventIsInPast();
+
         Guest? guestToRemove = _guests.FirstOrDefault(g => g.GuestId == guestId);
         if (guestToRemove != null)
         {

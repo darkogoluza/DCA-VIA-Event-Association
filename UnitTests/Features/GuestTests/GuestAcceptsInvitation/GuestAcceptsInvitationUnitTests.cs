@@ -173,7 +173,7 @@ public class GuestAcceptsInvitationUnitTests
     }
 
     [Fact]
-    public void GuestAcceptsInvitation_EventIsPast()
+    public void GuestAcceptsInvitation_EventIsInPast()
     {
         // Arrange
         VeaEvent.Activate();

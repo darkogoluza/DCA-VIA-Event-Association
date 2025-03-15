@@ -3,6 +3,7 @@ using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Common.Values;
+using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.GuestTests.GuestParticipatesPublicEvent;
 
@@ -12,6 +13,7 @@ public class GuestCancelsParticipationEventUnitTests
     private readonly Guest Guest;
 
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
+    private DateTime CurrentDateTimeMockInTheFuture() => new DateTime(2025, 3, 5, 12, 0, 0);
 
     public GuestCancelsParticipationEventUnitTests()
     {
@@ -52,7 +54,7 @@ public class GuestCancelsParticipationEventUnitTests
         // Arrange 
 
         // Act
-        var cancelsParticipateResult = VeaEvent.CancelsParticipate(Guest.GuestId);
+        var cancelsParticipateResult = VeaEvent.CancelsParticipate(Guest.GuestId, CurrentDateTimeMock);
 
         // Assert
         Assert.True(cancelsParticipateResult.isSuccess);
@@ -66,10 +68,23 @@ public class GuestCancelsParticipationEventUnitTests
         VeaEvent.CancelsParticipate(Guest.GuestId);
 
         // Act
-        var cancelsParticipateResult = VeaEvent.CancelsParticipate(Guest.GuestId);
+        var cancelsParticipateResult = VeaEvent.CancelsParticipate(Guest.GuestId, CurrentDateTimeMock);
 
         // Assert
         Assert.True(cancelsParticipateResult.isSuccess);
         Assert.DoesNotContain(Guest, VeaEvent._guests);
+    }
+
+    [Fact]
+    public void GuestCancelsParticipatesPublicEvent_EventIsInPast()
+    {
+        // Arrange 
+
+        // Act
+        var cancelsParticipateResult = VeaEvent.CancelsParticipate(Guest.GuestId, CurrentDateTimeMockInTheFuture);
+
+        // Assert
+        Assert.True(cancelsParticipateResult.isFailure);
+        Assert.Contains(Error.EventIsInPast(), cancelsParticipateResult.errors);
     }
 }
