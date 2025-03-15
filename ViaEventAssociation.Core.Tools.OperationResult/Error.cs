@@ -132,4 +132,7 @@ public class Error
 
     public static Error CanNotAcceptInvitationEventIsFull() =>
         new Error("Can not accept an invitation the event is full.", 403);
+
+    public static Error CanNotDeclineInvitationOnCancelledEvent() =>
+        new Error("Can not decline an invitation on a cancelled event.", 403);
 }

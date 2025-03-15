@@ -295,9 +295,17 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Success();
     }
 
-    public Result<None> DeclineInvitation(Guest guest, Invitation invitation)
+    public Result<None> DeclineInvitation(Guest guest)
     {
-        throw new NotImplementedException();
+        if (Equals(EventStatusType.Cancelled, _eventStatusType))
+            return Error.CanNotDeclineInvitationOnCancelledEvent();
+
+        var invitation = _invitations.FirstOrDefault(i => i._inviteeId == guest.GuestId);
+        if (invitation == null)
+            return Error.InvitationNotFound();
+
+        invitation._statusType = StatusType.Rejected;
+        return Result<None>.Success();
     }
 
     public Result<None> ExtendInvitation(Guest guest, Invitation invitation)
