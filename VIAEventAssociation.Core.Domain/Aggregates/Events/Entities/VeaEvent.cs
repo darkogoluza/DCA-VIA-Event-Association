@@ -315,7 +315,7 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Success();
     }
 
-    public Result<None> ExtendInvitation(Guest guest, Invitation invitation)
+    public Result<None> ExtendInvitation(Guest guest)
     {
         throw new NotImplementedException();
     }

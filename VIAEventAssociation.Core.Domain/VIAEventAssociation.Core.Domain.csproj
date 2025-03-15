@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Aggregates\Invitations\Values\" />
       <Folder Include="Aggregates\RequestsToJoin\" />
     </ItemGroup>
 

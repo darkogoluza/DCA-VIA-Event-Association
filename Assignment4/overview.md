@@ -6,7 +6,7 @@
 * [X] Entity base
 * [X] Aggregate base
 * [X] Implementing Base classes
-* [ ] Update domain model diagram
+* [X] Update domain model diagram
 
 ## Use Cases
 

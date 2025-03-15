@@ -1,4 +1,5 @@
-﻿using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
+﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
+using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
 using ViaEventAssociation.Core.Tools.OperationResult;
@@ -31,17 +32,17 @@ public class Guest : AggregateRoot
         return guest;
     }
 
-    public Result<RequestToJoin> RequestToJoin(Guid id)
+    public Result<RequestToJoin> RequestToJoin(VeaEventId veaEventId)
     {
         throw new NotImplementedException();
     }
 
-    public Result<None> JoinEvent(Guid id)
+    public Result<None> JoinEvent(VeaEventId veaEventId)
     {
         throw new NotImplementedException();
     }
 
-    public Result<None> LeaveEvent(Guid id)
+    public Result<None> LeaveEvent(VeaEventId veaEventId)
     {
         throw new NotImplementedException();
     }
