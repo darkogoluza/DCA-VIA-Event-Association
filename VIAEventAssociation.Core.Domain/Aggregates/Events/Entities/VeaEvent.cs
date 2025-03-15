@@ -269,9 +269,30 @@ public class VeaEvent : AggregateRoot
         return Result<None>.Success();
     }
 
-    public Result<None> AcceptInvitation(Guest guest, Invitation invitation)
+    public Result<None> AcceptInvitation(Guest guest, CurrentDateTime? currentDateTime = null)
     {
-        throw new NotImplementedException();
+        if (currentDateTime == null)
+            currentDateTime = () => DateTime.Now;
+
+        if (Equals(EventStatusType.Cancelled, _eventStatusType))
+            return Error.CanNotAcceptInvitationOnCancelledEvent();
+
+        if (Equals(EventStatusType.Ready, _eventStatusType))
+            return Error.CanNotAcceptInvitationOnReadiedEvent();
+
+        if ((_guests.Count + _invitations.Count) >= _maxNoOfGuests?.Value)
+            return Error.CanNotAcceptInvitationEventIsFull();
+
+        var invitation = _invitations.FirstOrDefault(i => i._inviteeId == guest.GuestId);
+        if (invitation == null)
+            return Error.InvitationNotFound();
+
+        DateTime now = currentDateTime();
+        if (now > _startDateTime)
+            return Error.EventIsInPast();
+
+        invitation._statusType = StatusType.Accepted;
+        return Result<None>.Success();
     }
 
     public Result<None> DeclineInvitation(Guest guest, Invitation invitation)

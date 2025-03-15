@@ -99,9 +99,16 @@
   * [X] S1
   * [X] S2
   * [ ] F2 Can not make this if only way to join the event is for the event to be active UC11-F1,S1
-* [ ] UC13
-  * [ ] S1
-  * [ ] F1
-  * [ ] F2
-  * [ ] F3
-  * [ ] F4
+* [X] UC13
+  * [X] S1
+  * [X] F1
+  * [X] F2
+  * [X] F3
+  * [X] F4
+* [X] UC14
+  * [X] S1
+  * [X] F1
+  * [X] F2
+  * [X] F3
+  * [X] F4
+  * [X] F5

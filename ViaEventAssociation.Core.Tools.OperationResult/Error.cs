@@ -120,4 +120,16 @@ public class Error
 
     // Last Name
     public static Error WrongLastNameFormat() => BadInput("Last name is ofa wrong format.");
+
+    // Invitation
+    public static Error InvitationNotFound() => NotFound();
+
+    public static Error CanNotAcceptInvitationOnCancelledEvent() =>
+        new Error("Can not accept an invitation on a cancelled event.", 403);
+
+    public static Error CanNotAcceptInvitationOnReadiedEvent() =>
+        new Error("Can not accept an invitation on a readied event.", 403);
+
+    public static Error CanNotAcceptInvitationEventIsFull() =>
+        new Error("Can not accept an invitation the event is full.", 403);
 }
