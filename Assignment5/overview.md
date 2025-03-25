@@ -2,9 +2,9 @@
 
 ## Use Cases
 
-* [ ] UC1
-  * [ ] Command
-  * [ ] Handler
+* [X] UC1
+  * [X] Command
+  * [X] Handler
 * [X] UC2
   * [X] Command
   * [X] Handler

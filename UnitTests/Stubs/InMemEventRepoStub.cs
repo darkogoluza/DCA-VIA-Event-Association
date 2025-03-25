@@ -9,8 +9,7 @@ public class InMemEventRepoStub : IEventRepository
 
     public Task<VeaEvent> GetAsync(Guid id)
     {
-        // return Task.FromResult(Events.First(e => e.VeaEventId.Id == id)); for later
-        return Task.FromResult(Events[0]);
+        return Task.FromResult(Events.First(e => e.VeaEventId.Id == id));
     }
 
     public Task RemoveAsync(Guid id)
