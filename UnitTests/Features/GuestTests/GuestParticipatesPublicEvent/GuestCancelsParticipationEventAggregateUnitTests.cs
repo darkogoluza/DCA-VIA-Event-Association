@@ -7,7 +7,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.GuestTests.GuestParticipatesPublicEvent;
 
-public class GuestCancelsParticipationEventUnitTests
+public class GuestCancelsParticipationEventAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
     private readonly Guest Guest;
@@ -15,7 +15,7 @@ public class GuestCancelsParticipationEventUnitTests
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
     private DateTime CurrentDateTimeMockInTheFuture() => new DateTime(2025, 3, 5, 12, 0, 0);
 
-    public GuestCancelsParticipationEventUnitTests()
+    public GuestCancelsParticipationEventAggregateUnitTests()
     {
         // Arrange
         var expectedTitleResult = Title.Create("Working Title");

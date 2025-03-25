@@ -8,14 +8,14 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.GuestTests.GuestParticipatesPublicEvent;
 
-public class GuestParticipatesPublicEventUnitTests
+public class GuestParticipatesPublicEventAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
     private readonly Guest Guest;
 
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
-    public GuestParticipatesPublicEventUnitTests()
+    public GuestParticipatesPublicEventAggregateUnitTests()
     {
         // Arrange
         var expectedTitleResult = Title.Create("Working Title");
