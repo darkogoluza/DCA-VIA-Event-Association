@@ -7,8 +7,13 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=26f754ce_002D75cc_002D448c_002Dbf25_002Df8f3268f2fcb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="EventUpdateStartEndDateTime_ActiveState" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\Darko\Desktop\VIA\Semester 7\DCA\VIAEventAssociation\UnitTests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;UnitTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=27c123be_002D942d_002D4e2b_002D99ff_002Da8816e3ec5dd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GuestAcceptsInvitation_CancelledState" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=27c123be_002D942d_002D4e2b_002D99ff_002Da8816e3ec5dd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GuestAcceptsInvitation_CancelledState" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\Darko\Desktop\VIA\Semester 7\DCA\VIAEventAssociation\UnitTests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;UnitTests&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=60b3f4f3_002D19c6_002D490d_002Db14e_002D6a026acae097/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UpdateDescriptionCommand_Error" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.Event.UpdateDescription.EventDescriptionCommandHandlerTest.UpdateDescription&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=73b886cf_002Da7b2_002D4f53_002D9b08_002D7948efc79524/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GuestAcceptsInvitation" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;

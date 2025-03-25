@@ -5,7 +5,7 @@ namespace UnitTests.Features.Event.UpdateTitle;
 public class EventTitleCommandTest
 {
     [Fact]
-    public void CreateCommand()
+    public void UpdateTitleCommand()
     {
         // Arrange
         string title = "New title";
@@ -19,7 +19,7 @@ public class EventTitleCommandTest
     }
 
     [Fact]
-    public void CreateCommand_Error()
+    public void UpdateTitleCommand_Error()
     {
         // Arrange
         string title = "Ne";
