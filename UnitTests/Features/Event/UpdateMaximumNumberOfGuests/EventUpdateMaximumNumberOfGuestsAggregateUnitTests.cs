@@ -5,11 +5,11 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.Event.UpdateMaximumNumberOfGuests;
 
-public class EventUpdateMaximumNumberOfGuestsUnitTests
+public class EventUpdateMaximumNumberOfGuestsAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
 
-    public EventUpdateMaximumNumberOfGuestsUnitTests()
+    public EventUpdateMaximumNumberOfGuestsAggregateUnitTests()
     {
         // Arrange
         var expectedTitleResult = Title.Create("Working Title");
