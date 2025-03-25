@@ -8,3 +8,9 @@
 * [X] UC2
   * [X] Command
   * [X] Handler
+* [X] UC3
+  * [X] Command
+  * [X] Handler
+* [X] UC4
+  * [X] Command
+  * [X] Handler
