@@ -5,12 +5,12 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.Event.UpdateVisibility;
 
-public class EventVisibilityPrivateUnitTests
+public class EventVisibilityPrivateAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
-    public EventVisibilityPrivateUnitTests()
+    public EventVisibilityPrivateAggregateUnitTests()
     {
         // Arrange
         var expectedTitleResult = Title.Create("Working Title");
