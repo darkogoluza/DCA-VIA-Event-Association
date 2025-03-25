@@ -23,3 +23,6 @@
 * [X] UC7
   * [X] Command
   * [X] Handler
+* [X] UC8
+  * [X] Command
+  * [X] Handler

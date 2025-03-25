@@ -6,11 +6,11 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.Event.ReadieEvent;
 
-public class ReadieEventUnitTests
+public class ReadieEventAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
 
-    public ReadieEventUnitTests()
+    public ReadieEventAggregateUnitTests()
     {
         // Arrange
         // None
