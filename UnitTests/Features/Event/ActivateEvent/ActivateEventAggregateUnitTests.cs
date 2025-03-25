@@ -5,12 +5,12 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.Event.ActivateEvent;
 
-public class ActivateEventUnitTests
+public class ActivateEventAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
-    public ActivateEventUnitTests()
+    public ActivateEventAggregateUnitTests()
     {
         // Arrange
         // None

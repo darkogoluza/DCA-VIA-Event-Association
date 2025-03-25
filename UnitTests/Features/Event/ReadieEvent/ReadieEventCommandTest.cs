@@ -8,7 +8,7 @@ public class ReadieEventCommandTest
     public void Redie()
     {
         // Arrange
-        string title = "New title";
+        // None
 
         // Act
         var result = ReadieEventCommand.Create(Guid.NewGuid());
@@ -21,7 +21,6 @@ public class ReadieEventCommandTest
     public void Redie_WithMock()
     {
         // Arrange
-        string title = "New title";
         DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
         // Act
