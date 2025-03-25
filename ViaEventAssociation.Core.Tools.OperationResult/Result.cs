@@ -5,7 +5,7 @@ public class Result<T>
     public List<Error> errors { get; } = new List<Error>();
     public bool isFailure => errors.Count > 0;
     public bool isSuccess => !isFailure;
-    public T payload { get; }
+    public T payload { get; set; }
 
     protected Result(T? value, List<Error> errors)
     {
@@ -35,6 +35,19 @@ public class Result<T>
     }
 
     public static Result<None> Success() => Result<None>.Success(None.Value);
+
+    public static Result<T> FromResult<T2>(Result<T2> result)
+    {
+        return result.isFailure ? Result<T>.Failure(result.errors.ToArray()) : Result<T>.Success(default!);
+    }
+
+    public Result<T> WithResult<T2>(Result<T2> result)
+    {
+        if (result.isFailure)
+            errors.AddRange(result.errors);
+
+        return this;
+    }
 
     public static implicit operator Result<T>(T value) => Success(value);
     public static implicit operator Result<T>(Error error) => Failure(error);

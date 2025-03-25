@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIAEventAssociation.Core.Tools.Enumeration", "VIAEventAssociation.Core.Tools.Enumeration\VIAEventAssociation.Core.Tools.Enumeration.csproj", "{420EFBC9-0A0E-421D-803B-135D19F5D522}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment5", "Assignment5\Assignment5.csproj", "{51885733-6C23-4F62-9BD4-EA29E721C0E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaEventAssociation.Core.Application", "ViaEventAssociation.Core.Application\ViaEventAssociation.Core.Application.csproj", "{E5621656-B637-4260-870E-8A0527B3D12A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,8 @@ Global
 		{2E673380-CE4B-4E31-B155-A2AD6CA21D1B} = {FE2CC59B-73DA-46A5-A221-3332B92B4183}
 		{26429B2F-A134-4807-9A13-B66C09FD5412} = {88D3E15D-6447-4666-BDC1-EBC2026E91EB}
 		{420EFBC9-0A0E-421D-803B-135D19F5D522} = {6792170C-B19B-4625-9E56-A515605D8EDA}
+		{51885733-6C23-4F62-9BD4-EA29E721C0E0} = {78C713FC-10F0-4E13-A7E9-D1ED91AA9F0E}
+		{E5621656-B637-4260-870E-8A0527B3D12A} = {FE2CC59B-73DA-46A5-A221-3332B92B4183}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -74,5 +80,13 @@ Global
 		{420EFBC9-0A0E-421D-803B-135D19F5D522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420EFBC9-0A0E-421D-803B-135D19F5D522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420EFBC9-0A0E-421D-803B-135D19F5D522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51885733-6C23-4F62-9BD4-EA29E721C0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51885733-6C23-4F62-9BD4-EA29E721C0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51885733-6C23-4F62-9BD4-EA29E721C0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51885733-6C23-4F62-9BD4-EA29E721C0E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5621656-B637-4260-870E-8A0527B3D12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5621656-B637-4260-870E-8A0527B3D12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5621656-B637-4260-870E-8A0527B3D12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5621656-B637-4260-870E-8A0527B3D12A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

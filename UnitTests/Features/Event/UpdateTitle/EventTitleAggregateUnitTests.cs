@@ -5,12 +5,12 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.Event.UpdateTitle;
 
-public class EventTitleUnitTests
+public class EventTitleAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
-    public EventTitleUnitTests()
+    public EventTitleAggregateUnitTests()
     {
         // Arrange
         var expectedTitleResult = Title.Create("Working Title");
