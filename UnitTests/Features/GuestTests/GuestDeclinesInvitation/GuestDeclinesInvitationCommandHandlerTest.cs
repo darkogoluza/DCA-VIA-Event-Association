@@ -3,7 +3,7 @@ using UnitTests.Stubs;
 using ViaEventAssociation.Core.Application.Common.CommandHandler;
 using ViaEventAssociation.Core.Application.Features.Event.CreateEvent;
 using ViaEventAssociation.Core.Application.Features.Guest.RegisterGuest;
-using ViaEventAssociation.Core.Application.Features.Invitation.AcceptInvitation;
+using ViaEventAssociation.Core.Application.Features.Invitation.DeclineInvitation;
 using ViaEventAssociation.Core.Application.Features.Invitation.Invate;
 using VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
@@ -11,9 +11,9 @@ using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Common.Repositories;
 using VIAEventAssociation.Core.Domain.Common.Values;
 
-namespace UnitTests.Features.GuestTests.GuestAcceptsInvitation;
+namespace UnitTests.Features.GuestTests.GuestDeclinesInvitation;
 
-public class GuestAcceptInvitationCommandHandlerTest
+public class GuestDeclinesInvitationCommandHandlerTest
 {
     private readonly InMemEventRepoStub repoEvent = new();
     private readonly InMemGuestRepoStub repoGuest = new();
@@ -22,7 +22,7 @@ public class GuestAcceptInvitationCommandHandlerTest
 
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
-    public GuestAcceptInvitationCommandHandlerTest()
+    public GuestDeclinesInvitationCommandHandlerTest()
     {
         // Arrange 
         var expectedTitleResult = Title.Create("Working Title");
@@ -62,14 +62,14 @@ public class GuestAcceptInvitationCommandHandlerTest
     }
 
     [Fact]
-    public async Task GuestAcceptInvite()
+    public async Task GuestDeclineInvite()
     {
         // Arrange
         IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<GuestAcceptsInvitationCommand> handler = new GuestAcceptsInvitationHandler(repoEvent, repoGuest, uow);
+        ICommandHandler<GuestDeclineInvitationCommand> handler = new GuestDeclineInvitationHandler(repoEvent, repoGuest, uow);
 
-        GuestAcceptsInvitationCommand command =
-            GuestAcceptsInvitationCommand.Create(_veaEvent.VeaEventId.Id, _guest.GuestId.Id, CurrentDateTimeMock).payload;
+        GuestDeclineInvitationCommand command =
+            GuestDeclineInvitationCommand.Create(_veaEvent.VeaEventId.Id, _guest.GuestId.Id).payload;
 
         // Act
         var result = await handler.HandleAsync(command);
@@ -78,6 +78,6 @@ public class GuestAcceptInvitationCommandHandlerTest
         Assert.True(result.isSuccess);
         Assert.Single(repoEvent.Events);
         Assert.Single(_veaEvent._invitations);
-        Assert.Equal(StatusType.Accepted, _veaEvent._invitations[0]._statusType);
+        Assert.Equal(StatusType.Rejected, _veaEvent._invitations[0]._statusType);
     }
 }

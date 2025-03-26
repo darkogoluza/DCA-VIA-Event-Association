@@ -9,7 +9,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.GuestTests.GuestDeclinesInvitation;
 
-public class GuestDeclinesInvitationUnitTests
+public class GuestDeclinesInvitationAggregateUnitTests
 {
     private readonly VeaEvent VeaEvent;
     private readonly Guest Guest;
@@ -18,7 +18,7 @@ public class GuestDeclinesInvitationUnitTests
 
     private readonly GuestInviteService _guestInviteService;
 
-    public GuestDeclinesInvitationUnitTests()
+    public GuestDeclinesInvitationAggregateUnitTests()
     {
         _guestInviteService = new GuestInviteService();
 
