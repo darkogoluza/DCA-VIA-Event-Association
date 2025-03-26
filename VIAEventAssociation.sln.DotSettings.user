@@ -17,6 +17,9 @@
     &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestCancelsParticipationEventCommandTest.CanclesParticipate&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestCancelsParticipationEventCommandHandlerTest.CancelParticipate&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestCancelsParticipationEventCommandTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestInvite.GuestInvitedCommandTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestInvite.GuestInvitedCommandHandlerTest.GuestInvited&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestInvite.GuestInvitedCommandHandlerTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	

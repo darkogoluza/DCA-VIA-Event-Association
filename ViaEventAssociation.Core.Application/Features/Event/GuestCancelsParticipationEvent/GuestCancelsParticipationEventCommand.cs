@@ -31,7 +31,7 @@ public class GuestCancelsParticipationEventCommand
         return result;
     }
 
-    public GuestCancelsParticipationEventCommand(VeaEventId veaEventId, GuestId guestId,
+    private GuestCancelsParticipationEventCommand(VeaEventId veaEventId, GuestId guestId,
         CurrentDateTime? currentDateTime)
     {
         VeaEventId = veaEventId;

@@ -19,7 +19,6 @@ public class GuestParticipateEventHandler : ICommandHandler<GuestParticipateEven
         _guestRepository = guestRepository;
     }
 
-
     public async Task<Result<None>> HandleAsync(GuestParticipateEventCommand command)
     {
         VeaEvent veaEvent = await _eventRepository.GetAsync(command.VeaEventId.Id);

@@ -35,7 +35,7 @@ public class RegisterGuestCommand
         return result;
     }
 
-    public RegisterGuestCommand(VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities.Guest guest)
+    private RegisterGuestCommand(VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities.Guest guest)
     {
         Guest = guest;
     }
