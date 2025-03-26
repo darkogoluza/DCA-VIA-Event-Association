@@ -1,9 +1,8 @@
-﻿using ViaEventAssociation.Core.Application.Features.Event.GuestParticipateEvent;
-using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
+﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
-namespace ViaEventAssociation.Core.Application.Features.Invitation;
+namespace ViaEventAssociation.Core.Application.Features.Invitation.Invate;
 
 public class GuestInvitedCommand
 {

@@ -6,21 +6,7 @@
   &lt;Project Location="C:\Users\Darko\Desktop\VIA\Semester 7\DCA\VIAEventAssociation\UnitTests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;UnitTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=81ef5be0_002De148_002D402e_002Db9b3_002D2b91a8996a96/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ActivateEventCommandTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.Event.ActivateEvent.ActivateEventCommandTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.Register.RegisterGuestCommandTest.RegisterGuestCommand_Success&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.Register.RegisterGuestCommandTest.RegisterGuestCommand_Error&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.Register.RegisterGuestCommandHandlerTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestParticipateEventCommandTest.Participate&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestParticipateEventCommandHandler.Participate&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestParticipateEventCommandHandler&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestCancelsParticipationEventCommandTest.CanclesParticipate&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestCancelsParticipationEventCommandHandlerTest.CancelParticipate&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestParticipatesPublicEvent.GuestCancelsParticipationEventCommandTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestInvite.GuestInvitedCommandTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestInvite.GuestInvitedCommandHandlerTest.GuestInvited&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::26429B2F-A134-4807-9A13-B66C09FD5412::net8.0::UnitTests.Features.GuestTests.GuestInvite.GuestInvitedCommandHandlerTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Project Location="C:\Users\Darko\Desktop\VIA\Semester 7\DCA\VIAEventAssociation\UnitTests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;UnitTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
 	

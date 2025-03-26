@@ -1,4 +1,5 @@
 ﻿using ViaEventAssociation.Core.Application.Features.Invitation;
+using ViaEventAssociation.Core.Application.Features.Invitation.Invate;
 
 namespace UnitTests.Features.GuestTests.GuestInvite;
 

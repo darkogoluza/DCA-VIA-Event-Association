@@ -4,7 +4,7 @@ using VIAEventAssociation.Core.Domain.Common.Repositories;
 using VIAEventAssociation.Core.Domain.Services;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
-namespace ViaEventAssociation.Core.Application.Features.Invitation;
+namespace ViaEventAssociation.Core.Application.Features.Invitation.Invate;
 
 public class GuestInvitationHandler : ICommandHandler<GuestInvitedCommand>
 {
