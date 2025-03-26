@@ -8,11 +8,10 @@ using VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Common.Repositories;
-using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.GuestTests.GuestParticipatesPublicEvent;
 
-public class GuestParticipateEventCommandHandler
+public class GuestParticipateEventCommandHandlerTest
 {
     private readonly InMemEventRepoStub repoEvent = new();
     private readonly InMemGuestRepoStub repoGuest = new();
@@ -20,7 +19,7 @@ public class GuestParticipateEventCommandHandler
     private Guest _guest;
     private DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
 
-    public GuestParticipateEventCommandHandler()
+    public GuestParticipateEventCommandHandlerTest()
     {
         IUnitOfWork uow = new FakeUoW();
         ICommandHandler<CreateEventCommand> handlerEvent = new CreateEventHandler(repoEvent, uow);
