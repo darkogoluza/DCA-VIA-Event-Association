@@ -21,8 +21,7 @@ public class GuestParticipateEventCommandHandlerTest
 
     public GuestParticipateEventCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handlerEvent = new CreateEventHandler(repoEvent, uow);
+        ICommandHandler<CreateEventCommand> handlerEvent = new CreateEventHandler(repoEvent);
 
         CreateEventCommand commandEvent = CreateEventCommand.Create().payload;
         handlerEvent.HandleAsync(commandEvent);
@@ -41,7 +40,7 @@ public class GuestParticipateEventCommandHandlerTest
         _veaEvent.Readie(CurrentDateTimeMock);
         _veaEvent.Activate();
 
-        ICommandHandler<RegisterGuestCommand> handlerGuest = new RegisterGuestHandler(repoGuest, uow);
+        ICommandHandler<RegisterGuestCommand> handlerGuest = new RegisterGuestHandler(repoGuest);
 
         RegisterGuestCommand commandGuest = RegisterGuestCommand.Create("John", "Doe", "jhd@via.dk",
                 "https://media.istockphoto.com/id/521573873/vector/unknown-person-silhouette-whith-blue-tie.jpg?s=2048x2048&w=is&k=20&c=cjOrS4d7gV46uXDx9iWH5n5uSEF6hhZ6Gebbp5j6USI=")
@@ -54,8 +53,7 @@ public class GuestParticipateEventCommandHandlerTest
     public async Task Participate()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<GuestParticipateEventCommand> handler = new GuestParticipateEventHandler(repoEvent, repoGuest, uow);
+        ICommandHandler<GuestParticipateEventCommand> handler = new GuestParticipateEventHandler(repoEvent, repoGuest);
 
         GuestParticipateEventCommand command =
             GuestParticipateEventCommand.Create(_veaEvent.VeaEventId.Id, _guest.GuestId.Id).payload;

@@ -15,8 +15,7 @@ public class EventVisibilityCommandHandlerTest
 
     public EventVisibilityCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
         handler.HandleAsync(command);
@@ -27,8 +26,7 @@ public class EventVisibilityCommandHandlerTest
     public async Task UpdateVisibility_Public()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<UpdateEventVisibilityCommand> handler = new UpdateEventVisibilityHandler(repo, uow);
+        ICommandHandler<UpdateEventVisibilityCommand> handler = new UpdateEventVisibilityHandler(repo);
 
         UpdateEventVisibilityCommand command =
             UpdateEventVisibilityCommand.Create(_veaEvent.VeaEventId.Id, true).payload;
@@ -47,8 +45,7 @@ public class EventVisibilityCommandHandlerTest
     public async Task UpdateVisibility_Private()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<UpdateEventVisibilityCommand> handler = new UpdateEventVisibilityHandler(repo, uow);
+        ICommandHandler<UpdateEventVisibilityCommand> handler = new UpdateEventVisibilityHandler(repo);
 
         UpdateEventVisibilityCommand command =
             UpdateEventVisibilityCommand.Create(_veaEvent.VeaEventId.Id, false).payload;

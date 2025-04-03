@@ -15,8 +15,7 @@ public class EventDescriptionCommandHandlerTest
 
     public EventDescriptionCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
         handler.HandleAsync(command);
@@ -28,7 +27,7 @@ public class EventDescriptionCommandHandlerTest
     {
         // Arrange
         IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<UpdateEventDescriptionCommand> handler = new UpdateEventDescriptionHandler(repo, uow);
+        ICommandHandler<UpdateEventDescriptionCommand> handler = new UpdateEventDescriptionHandler(repo);
 
         UpdateEventDescriptionCommand command = UpdateEventDescriptionCommand.Create(_veaEvent.VeaEventId.Id, "New description").payload;
 

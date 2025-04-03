@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.GuestCancelsPartic
 public class GuestCancelsParticipationEventHandler : ICommandHandler<GuestCancelsParticipationEventCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public GuestCancelsParticipationEventHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public GuestCancelsParticipationEventHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(GuestCancelsParticipationEventCommand command)
@@ -23,7 +21,6 @@ public class GuestCancelsParticipationEventHandler : ICommandHandler<GuestCancel
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

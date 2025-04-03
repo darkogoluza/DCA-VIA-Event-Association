@@ -15,8 +15,7 @@ public class EventStartEndDateTimeCommandHandlerTest
 
     public EventStartEndDateTimeCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
         handler.HandleAsync(command);
@@ -27,8 +26,7 @@ public class EventStartEndDateTimeCommandHandlerTest
     public async Task UpdateStartAndEndDateTime()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<UpdateEventStartAndEndDateTimeCommand> handler = new UpdateEventStartAndEndDateTimeHandler(repo, uow);
+        ICommandHandler<UpdateEventStartAndEndDateTimeCommand> handler = new UpdateEventStartAndEndDateTimeHandler(repo);
         DateTime start = new DateTime(2025, 03, 25, 13, 0, 0);
         DateTime end = new DateTime(2025, 03, 25, 16, 0, 0);
 

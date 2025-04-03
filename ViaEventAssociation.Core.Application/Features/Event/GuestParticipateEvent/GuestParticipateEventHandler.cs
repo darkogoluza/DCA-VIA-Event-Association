@@ -9,13 +9,10 @@ public class GuestParticipateEventHandler : ICommandHandler<GuestParticipateEven
 {
     private readonly IEventRepository _eventRepository;
     private readonly IGuestRepository _guestRepository;
-    private readonly IUnitOfWork _uow;
 
-    public GuestParticipateEventHandler(IEventRepository eventRepository, IGuestRepository guestRepository,
-        IUnitOfWork uow)
+    public GuestParticipateEventHandler(IEventRepository eventRepository, IGuestRepository guestRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
         _guestRepository = guestRepository;
     }
 
@@ -28,7 +25,6 @@ public class GuestParticipateEventHandler : ICommandHandler<GuestParticipateEven
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

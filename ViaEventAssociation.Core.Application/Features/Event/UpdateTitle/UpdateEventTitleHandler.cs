@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.UpdateTitle;
 public class UpdateEventTitleHandler : ICommandHandler<UpdateEventTitleCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public UpdateEventTitleHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public UpdateEventTitleHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(UpdateEventTitleCommand command)
@@ -23,7 +21,6 @@ public class UpdateEventTitleHandler : ICommandHandler<UpdateEventTitleCommand>
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

@@ -16,8 +16,7 @@ public class ReadieEventCommandHandlerTest
 
     public ReadieEventCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
         handler.HandleAsync(command);
@@ -38,8 +37,7 @@ public class ReadieEventCommandHandlerTest
     public async Task ReadieHandler()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<ReadieEventCommand> handler = new ReadieEventHandler(repo, uow);
+        ICommandHandler<ReadieEventCommand> handler = new ReadieEventHandler(repo);
 
         DateTime CurrentDateTimeMock() => new DateTime(2025, 3, 3, 12, 0, 0);
         ReadieEventCommand command = ReadieEventCommand.Create(_veaEvent.VeaEventId.Id, CurrentDateTimeMock).payload;

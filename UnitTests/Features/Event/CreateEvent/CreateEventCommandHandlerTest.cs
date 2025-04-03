@@ -15,8 +15,7 @@ public class CreateEventCommandHandlerTest
     public async void CreateEventCommandHandler_Success()
     {
         // Arrange 
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
 

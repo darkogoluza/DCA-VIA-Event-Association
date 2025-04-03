@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.UpdateDescription;
 public class UpdateEventDescriptionHandler : ICommandHandler<UpdateEventDescriptionCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public UpdateEventDescriptionHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public UpdateEventDescriptionHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
 
@@ -24,7 +22,6 @@ public class UpdateEventDescriptionHandler : ICommandHandler<UpdateEventDescript
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

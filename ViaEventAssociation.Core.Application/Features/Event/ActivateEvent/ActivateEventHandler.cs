@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.ActivateEvent;
 public class ActivateEventHandler : ICommandHandler<ActivateEventCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public ActivateEventHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public ActivateEventHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(ActivateEventCommand command)
@@ -23,7 +21,6 @@ public class ActivateEventHandler : ICommandHandler<ActivateEventCommand>
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

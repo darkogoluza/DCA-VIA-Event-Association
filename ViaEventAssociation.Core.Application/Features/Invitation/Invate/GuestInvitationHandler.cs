@@ -9,12 +9,10 @@ namespace ViaEventAssociation.Core.Application.Features.Invitation.Invate;
 public class GuestInvitationHandler : ICommandHandler<GuestInvitedCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public GuestInvitationHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public GuestInvitationHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
 
@@ -26,7 +24,6 @@ public class GuestInvitationHandler : ICommandHandler<GuestInvitedCommand>
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

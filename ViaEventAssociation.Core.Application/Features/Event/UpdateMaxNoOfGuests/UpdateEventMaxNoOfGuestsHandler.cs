@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.UpdateMaxNoOfGuest
 public class UpdateEventMaxNoOfGuestsHandler : ICommandHandler<UpdateEventMaxNoOfGuestsCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public UpdateEventMaxNoOfGuestsHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public UpdateEventMaxNoOfGuestsHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(UpdateEventMaxNoOfGuestsCommand command)
@@ -23,7 +21,6 @@ public class UpdateEventMaxNoOfGuestsHandler : ICommandHandler<UpdateEventMaxNoO
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

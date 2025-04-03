@@ -15,8 +15,7 @@ public class EventUpdateMaximumNumberOfGuestsCommandHandlerTest
 
     public EventUpdateMaximumNumberOfGuestsCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
         handler.HandleAsync(command);
@@ -27,8 +26,7 @@ public class EventUpdateMaximumNumberOfGuestsCommandHandlerTest
     public async Task UpdateMaxNoOfGuests()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<UpdateEventMaxNoOfGuestsCommand> handler = new UpdateEventMaxNoOfGuestsHandler(repo, uow);
+        ICommandHandler<UpdateEventMaxNoOfGuestsCommand> handler = new UpdateEventMaxNoOfGuestsHandler(repo);
 
         UpdateEventMaxNoOfGuestsCommand command = UpdateEventMaxNoOfGuestsCommand.Create(_veaEvent.VeaEventId.Id, 10).payload;
 

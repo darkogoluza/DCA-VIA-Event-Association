@@ -16,8 +16,7 @@ public class EventTitleCommandHandlerTest
 
     public EventTitleCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
         handler.HandleAsync(command);
@@ -28,8 +27,7 @@ public class EventTitleCommandHandlerTest
     public async Task UpdateTitle()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<UpdateEventTitleCommand> handler = new UpdateEventTitleHandler(repo, uow);
+        ICommandHandler<UpdateEventTitleCommand> handler = new UpdateEventTitleHandler(repo);
 
         UpdateEventTitleCommand command = UpdateEventTitleCommand.Create(_veaEvent.VeaEventId.Id, "New Title").payload;
 

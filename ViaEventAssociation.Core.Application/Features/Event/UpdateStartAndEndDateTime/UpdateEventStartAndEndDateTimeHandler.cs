@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.UpdateStartAndEndD
 public class UpdateEventStartAndEndDateTimeHandler : ICommandHandler<UpdateEventStartAndEndDateTimeCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public UpdateEventStartAndEndDateTimeHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public UpdateEventStartAndEndDateTimeHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(UpdateEventStartAndEndDateTimeCommand command)
@@ -23,7 +21,6 @@ public class UpdateEventStartAndEndDateTimeHandler : ICommandHandler<UpdateEvent
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

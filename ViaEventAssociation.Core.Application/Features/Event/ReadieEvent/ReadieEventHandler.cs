@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.ReadieEvent;
 public class ReadieEventHandler : ICommandHandler<ReadieEventCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public ReadieEventHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public ReadieEventHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(ReadieEventCommand command)
@@ -23,7 +21,6 @@ public class ReadieEventHandler : ICommandHandler<ReadieEventCommand>
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

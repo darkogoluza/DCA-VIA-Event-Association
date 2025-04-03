@@ -8,12 +8,10 @@ namespace ViaEventAssociation.Core.Application.Features.Event.UpdateVisibility;
 public class UpdateEventVisibilityHandler : ICommandHandler<UpdateEventVisibilityCommand>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IUnitOfWork _uow;
 
-    public UpdateEventVisibilityHandler(IEventRepository eventRepository, IUnitOfWork uow)
+    public UpdateEventVisibilityHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(UpdateEventVisibilityCommand command)
@@ -23,7 +21,6 @@ public class UpdateEventVisibilityHandler : ICommandHandler<UpdateEventVisibilit
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

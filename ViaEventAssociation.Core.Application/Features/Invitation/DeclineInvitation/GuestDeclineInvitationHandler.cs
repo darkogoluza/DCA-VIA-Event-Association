@@ -9,14 +9,11 @@ public class GuestDeclineInvitationHandler : ICommandHandler<GuestDeclineInvitat
 {
     private readonly IEventRepository _eventRepository;
     private readonly IGuestRepository _guestRepository;
-    private readonly IUnitOfWork _uow;
 
-    public GuestDeclineInvitationHandler(IEventRepository eventRepository, IGuestRepository guestRepository,
-        IUnitOfWork uow)
+    public GuestDeclineInvitationHandler(IEventRepository eventRepository, IGuestRepository guestRepository)
     {
         _eventRepository = eventRepository;
         _guestRepository = guestRepository;
-        _uow = uow;
     }
 
     public async Task<Result<None>> HandleAsync(GuestDeclineInvitationCommand command)
@@ -28,7 +25,6 @@ public class GuestDeclineInvitationHandler : ICommandHandler<GuestDeclineInvitat
         if (result.isFailure)
             return result;
 
-        await _uow.SaveChangesAsync();
         return Result<None>.Success();
     }
 }

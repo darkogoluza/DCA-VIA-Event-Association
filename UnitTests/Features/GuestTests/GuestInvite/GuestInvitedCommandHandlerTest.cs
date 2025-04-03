@@ -36,8 +36,7 @@ public class GuestInvitedCommandHandlerTest
                 "https://media.istockphoto.com/id/521573873/vector/unknown-person-silhouette-whith-blue-tie.jpg?s=2048x2048&w=is&k=20&c=cjOrS4d7gV46uXDx9iWH5n5uSEF6hhZ6Gebbp5j6USI=");
 
         // Act
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handlerEvent = new CreateEventHandler(repoEvent, uow);
+        ICommandHandler<CreateEventCommand> handlerEvent = new CreateEventHandler(repoEvent);
 
         CreateEventCommand commandEvent = CreateEventCommand.Create().payload;
         handlerEvent.HandleAsync(commandEvent);
@@ -59,8 +58,7 @@ public class GuestInvitedCommandHandlerTest
     public async Task GuestInvited()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<GuestInvitedCommand> handler = new GuestInvitationHandler(repoEvent, uow);
+        ICommandHandler<GuestInvitedCommand> handler = new GuestInvitationHandler(repoEvent);
 
         GuestInvitedCommand command =
             GuestInvitedCommand.Create(_veaEvent.VeaEventId.Id, _guest.GuestId.Id).payload;

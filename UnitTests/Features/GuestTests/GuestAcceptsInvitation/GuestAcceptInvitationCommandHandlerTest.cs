@@ -30,8 +30,7 @@ public class GuestAcceptInvitationCommandHandlerTest
         var expectedMaxNoOfGuestsResult = MaxNoOfGuests.Create(5);
 
         // Act
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handlerEvent = new CreateEventHandler(repoEvent, uow);
+        ICommandHandler<CreateEventCommand> handlerEvent = new CreateEventHandler(repoEvent);
 
         CreateEventCommand commandEvent = CreateEventCommand.Create().payload;
         handlerEvent.HandleAsync(commandEvent);
@@ -46,14 +45,14 @@ public class GuestAcceptInvitationCommandHandlerTest
         _veaEvent.Readie(CurrentDateTimeMock);
         _veaEvent.Activate();
 
-        ICommandHandler<RegisterGuestCommand> handlerGuest = new RegisterGuestHandler(repoGuest, uow);
+        ICommandHandler<RegisterGuestCommand> handlerGuest = new RegisterGuestHandler(repoGuest);
         RegisterGuestCommand commandGuest = RegisterGuestCommand.Create("John", "Doe", "jhd@via.dk",
                 "https://media.istockphoto.com/id/521573873/vector/unknown-person-silhouette-whith-blue-tie.jpg?s=2048x2048&w=is&k=20&c=cjOrS4d7gV46uXDx9iWH5n5uSEF6hhZ6Gebbp5j6USI=")
             .payload;
         handlerGuest.HandleAsync(commandGuest);
         _guest = repoGuest.Guests[0];
 
-        ICommandHandler<GuestInvitedCommand> handlerInvite = new GuestInvitationHandler(repoEvent, uow);
+        ICommandHandler<GuestInvitedCommand> handlerInvite = new GuestInvitationHandler(repoEvent);
 
         GuestInvitedCommand commandInvite =
             GuestInvitedCommand.Create(_veaEvent.VeaEventId.Id, _guest.GuestId.Id).payload;
@@ -65,8 +64,7 @@ public class GuestAcceptInvitationCommandHandlerTest
     public async Task GuestAcceptInvite()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<GuestAcceptsInvitationCommand> handler = new GuestAcceptsInvitationHandler(repoEvent, repoGuest, uow);
+        ICommandHandler<GuestAcceptsInvitationCommand> handler = new GuestAcceptsInvitationHandler(repoEvent, repoGuest);
 
         GuestAcceptsInvitationCommand command =
             GuestAcceptsInvitationCommand.Create(_veaEvent.VeaEventId.Id, _guest.GuestId.Id, CurrentDateTimeMock).payload;

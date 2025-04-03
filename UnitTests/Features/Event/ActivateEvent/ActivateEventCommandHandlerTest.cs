@@ -17,8 +17,7 @@ public class ActivateEventCommandHandlerTest
 
     public ActivateEventCommandHandlerTest()
     {
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo, uow);
+        ICommandHandler<CreateEventCommand> handler = new CreateEventHandler(repo);
 
         CreateEventCommand command = CreateEventCommand.Create().payload;
         handler.HandleAsync(command);
@@ -41,8 +40,7 @@ public class ActivateEventCommandHandlerTest
     public async Task ReadieHandler()
     {
         // Arrange
-        IUnitOfWork uow = new FakeUoW();
-        ICommandHandler<ActivateEventCommand> handler = new ActivateEventHandler(repo, uow);
+        ICommandHandler<ActivateEventCommand> handler = new ActivateEventHandler(repo);
 
         ActivateEventCommand command = ActivateEventCommand.Create(_veaEvent.VeaEventId.Id).payload;
 
