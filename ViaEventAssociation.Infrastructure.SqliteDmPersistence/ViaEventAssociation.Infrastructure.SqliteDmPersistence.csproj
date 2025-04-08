@@ -21,7 +21,6 @@
 
     <ItemGroup>
       <Folder Include="GuestPersistence\" />
-      <Folder Include="VeaEventPersistence\" />
     </ItemGroup>
 
 </Project>

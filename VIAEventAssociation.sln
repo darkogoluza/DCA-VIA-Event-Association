@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaEventAssociation.Infrastructure.SqliteDmPersistence", "ViaEventAssociation.Infrastructure.SqliteDmPersistence\ViaEventAssociation.Infrastructure.SqliteDmPersistence.csproj", "{445B3FA5-BE52-45E5-9EB8-3E20C5E6B21E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{9573BAEA-AEE2-49F3-BF74-90B4126B58A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,7 @@ Global
 		{E5621656-B637-4260-870E-8A0527B3D12A} = {FE2CC59B-73DA-46A5-A221-3332B92B4183}
 		{97B79C39-0971-4848-BC3F-4E2C52455C0D} = {6C4863D4-B909-4203-A1C2-D33B42A9F647}
 		{445B3FA5-BE52-45E5-9EB8-3E20C5E6B21E} = {97B79C39-0971-4848-BC3F-4E2C52455C0D}
+		{9573BAEA-AEE2-49F3-BF74-90B4126B58A4} = {88D3E15D-6447-4666-BDC1-EBC2026E91EB}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -98,5 +101,9 @@ Global
 		{445B3FA5-BE52-45E5-9EB8-3E20C5E6B21E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{445B3FA5-BE52-45E5-9EB8-3E20C5E6B21E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{445B3FA5-BE52-45E5-9EB8-3E20C5E6B21E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9573BAEA-AEE2-49F3-BF74-90B4126B58A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9573BAEA-AEE2-49F3-BF74-90B4126B58A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9573BAEA-AEE2-49F3-BF74-90B4126B58A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9573BAEA-AEE2-49F3-BF74-90B4126B58A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

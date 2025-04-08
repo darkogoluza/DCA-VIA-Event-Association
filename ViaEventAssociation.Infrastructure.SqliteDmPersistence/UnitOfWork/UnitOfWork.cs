@@ -5,9 +5,9 @@ namespace ViaEventAssociation.Infrastructure.SqliteDmPersistence.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly DbContext _context;
+    private readonly SqliteDmContext _context;
 
-    public UnitOfWork(DbContext context)
+    public UnitOfWork(SqliteDmContext context)
     {
         _context = context;
     }

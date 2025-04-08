@@ -12,8 +12,8 @@ using ViaEventAssociation.Infrastructure.SqliteDmPersistence;
 namespace ViaEventAssociation.Infrastructure.SqliteDmPersistence.Migrations
 {
     [DbContext(typeof(SqliteDmContext))]
-    [Migration("20250408120537_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20250408175802_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

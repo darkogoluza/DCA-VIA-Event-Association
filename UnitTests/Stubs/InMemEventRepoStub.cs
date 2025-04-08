@@ -23,4 +23,9 @@ public class InMemEventRepoStub : IEventRepository
         Events.Add(aggregate);
         return Task.CompletedTask;
     }
+
+    public Task<ICollection<VeaEvent>> GetAllAsync()
+    {
+        return Task.FromResult<ICollection<VeaEvent>>(Events);
+    }
 }

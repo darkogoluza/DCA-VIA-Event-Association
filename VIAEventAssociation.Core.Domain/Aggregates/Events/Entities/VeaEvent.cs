@@ -1,4 +1,5 @@
-﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
+﻿using System.ComponentModel.DataAnnotations;
+using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Invitations.Entities;
@@ -11,7 +12,7 @@ namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 
 public class VeaEvent : AggregateRoot
 {
-    public VeaEventId VeaEventId { get; }
+    public VeaEventId VeaEventId { get;  }
     internal Title? _title;
     internal Description? _description;
     internal DateTime? _startDateTime;
@@ -26,7 +27,9 @@ public class VeaEvent : AggregateRoot
     private TimeSpan _oneAM = new TimeSpan(1, 0, 0);
     private TimeSpan _eightAM = new TimeSpan(8, 0, 0);
 
-    private VeaEvent() { } // For EFC
+    private VeaEvent()
+    {
+    } // For EFC
 
     private VeaEvent(VeaEventId id, EventStatusType eventStatusType) : base(id.Id)
     {

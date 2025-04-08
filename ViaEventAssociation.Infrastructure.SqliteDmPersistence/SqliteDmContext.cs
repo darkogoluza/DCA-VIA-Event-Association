@@ -9,6 +9,7 @@ using VIAEventAssociation.Core.Domain.Aggregates.Invitations.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.RequestsToJoin.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.RequestsToJoin.Values;
 using VIAEventAssociation.Core.Domain.Common.Values;
+using ViaEventAssociation.Infrastructure.SqliteDmPersistence.VeaEventPersistence;
 
 namespace ViaEventAssociation.Infrastructure.SqliteDmPersistence;
 
@@ -22,10 +23,16 @@ public class SqliteDmContext(DbContextOptions options) : DbContext(options)
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SqliteDmContext).Assembly);
-        ConfigureVeaEvent(modelBuilder.Entity<VeaEvent>());
+        VeaEventEntityConfiguration.ConfigureVeaEvent(modelBuilder.Entity<VeaEvent>());
         ConfigureGuest(modelBuilder.Entity<Guest>());
         ConfigureInvitations(modelBuilder.Entity<Invitation>());
         ConfigureRequestsToJoin(modelBuilder.Entity<RequestToJoin>());
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder
+            .EnableSensitiveDataLogging();
     }
 
     private static void ConfigureRequestsToJoin(EntityTypeBuilder<RequestToJoin> entityBuilder)
@@ -139,69 +146,4 @@ public class SqliteDmContext(DbContextOptions options) : DbContext(options)
             .HasColumnName("profilePictureUrl");
     }
 
-    private static void ConfigureVeaEvent(EntityTypeBuilder<VeaEvent> entityBuilder)
-    {
-        entityBuilder.HasKey(veaEvent => veaEvent.VeaEventId);
-
-        entityBuilder // PK
-            .Property(veaEvent => veaEvent.VeaEventId)
-            .HasConversion(
-                veaEventId => veaEventId.Id,
-                dbValue => VeaEventId.FromGuid(dbValue)
-            )
-            .HasColumnName("id");
-
-        // Primitive Field
-        entityBuilder
-            .Property<bool?>("_visibility")
-            .HasColumnName("visibility");
-        entityBuilder
-            .Property<DateTime?>("_endDateTime")
-            .HasColumnName("endDateTime");
-        entityBuilder
-            .Property<DateTime?>("_startDateTime")
-            .HasColumnName("startDateTime");
-
-        // Nullable Value Objects
-        entityBuilder
-            .OwnsOne<Title>("_title")
-            .Property(title => title.Value)
-            .HasColumnName("title");
-        entityBuilder
-            .OwnsOne<Description>("_description")
-            .Property(description => description.Value)
-            .HasColumnName("description");
-        entityBuilder
-            .OwnsOne<MaxNoOfGuests>("_maxNoOfGuests")
-            .Property(maxNoOfGuests => maxNoOfGuests.Value)
-            .HasColumnName("maxNoOfGuests");
-
-        // Enumeration class
-        entityBuilder.ComplexProperty<EventStatusType>("_eventStatusType",
-            propBuilder =>
-            {
-                propBuilder.Property("backingValue")
-                    .HasColumnName("eventStatusType");
-            }
-        );
-
-        // Single nested Entity
-        entityBuilder
-            .HasOne<Location>("_location")
-            .WithOne()
-            .HasForeignKey<Location>("locationId")
-            .OnDelete(DeleteBehavior.Cascade);
-
-        // List of entities
-        entityBuilder
-            .HasMany<Guest>("_guests")
-            .WithOne()
-            .HasForeignKey("eventId")
-            .OnDelete(DeleteBehavior.Cascade);
-        entityBuilder
-            .HasMany<Invitation>("_invitations")
-            .WithOne()
-            .HasForeignKey("eventId")
-            .OnDelete(DeleteBehavior.Cascade);
-    }
 }
