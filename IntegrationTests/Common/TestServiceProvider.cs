@@ -16,13 +16,12 @@ public static class TestServiceProvider
     {
         var services = new ServiceCollection();
 
-        /*
-        services.AddDbContext<SqliteDmContext>(options =>
-            options.UseSqlite(@"Data Source = C:\Users\Darko\Desktop\VIA\Semester 7\DCA\VIAEventAssociation\ViaEventAssociation.Infrastructure.SqliteDmPersistence\VEADatabaseProduction.db"));
-         * 
-         */
-        services.AddDbContext<SqliteDmContext>(options =>
-            options.UseInMemoryDatabase(databaseName: "InMemoryVeaEventDb"));
+        DbContextOptionsBuilder<SqliteDmContext> dbContextOptionsBuilder = new();
+        string testDbName = "Test" + Guid.NewGuid() + ".db";
+        dbContextOptionsBuilder.UseSqlite(@"Data Source = " + testDbName);
+        SqliteDmContext context = new(dbContextOptionsBuilder.Options);
+
+        services.AddDbContext<SqliteDmContext>(options => options.UseSqlite(@"Data Source = " + testDbName));
 
         services.AddScoped<IEventRepository, VeaEventSqliteRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -37,6 +36,9 @@ public static class TestServiceProvider
         );
 
         var serviceProvider = services.BuildServiceProvider();
+        
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
 
         return serviceProvider;
     }
