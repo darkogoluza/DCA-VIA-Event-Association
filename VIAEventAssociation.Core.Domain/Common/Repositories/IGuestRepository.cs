@@ -2,4 +2,7 @@
 
 namespace VIAEventAssociation.Core.Domain.Common.Repositories;
 
-public interface IGuestRepository : IGenericRepository<Guest>;
+public interface IGuestRepository : IGenericRepository<Guest>
+{
+    public Task<ICollection<Guest>> GetAllAsync();
+}

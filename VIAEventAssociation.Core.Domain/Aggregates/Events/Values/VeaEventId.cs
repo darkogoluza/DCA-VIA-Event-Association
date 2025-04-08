@@ -5,7 +5,7 @@ namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 
 public class VeaEventId : ValueObject
 {
-    public Guid Id { get;  }
+    public Guid Id { get; }
 
     private VeaEventId(Guid id)
     {
@@ -26,12 +26,17 @@ public class VeaEventId : ValueObject
     {
         yield return Id;
     }
-    
+
     public override bool Equals(object? obj)
     {
         if (ReferenceEquals(this, obj)) return true;
         if (obj is null || GetType() != obj.GetType()) return false;
 
         return Id.Equals(((VeaEventId)obj).Id);
+    }
+
+    public override int GetHashCode()
+    {
+        throw new NotImplementedException();
     }
 }

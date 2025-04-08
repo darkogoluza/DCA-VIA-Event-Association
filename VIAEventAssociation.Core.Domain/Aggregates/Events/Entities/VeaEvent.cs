@@ -12,7 +12,7 @@ namespace VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 
 public class VeaEvent : AggregateRoot
 {
-    public VeaEventId VeaEventId { get;  }
+    public VeaEventId VeaEventId { get; }
     internal Title? _title;
     internal Description? _description;
     internal DateTime? _startDateTime;

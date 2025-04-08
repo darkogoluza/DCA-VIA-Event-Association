@@ -23,4 +23,9 @@ public class InMemGuestRepoStub : IGuestRepository
         Guests.Add(aggregate);
         return Task.CompletedTask;
     }
+
+    public Task<ICollection<Guest>> GetAllAsync()
+    {
+        return Task.FromResult<ICollection<Guest>>(Guests);
+    }
 }

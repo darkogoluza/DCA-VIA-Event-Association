@@ -22,5 +22,5 @@ public abstract class RepositoryBase<T> : IGenericRepository<T> where T : Aggreg
     }
 
     public async Task AddAsync(T aggregate)
-        => await _context.Set<T>().AddAsync(aggregate); 
+        => await _context.Set<T>().AddAsync(aggregate);
 }

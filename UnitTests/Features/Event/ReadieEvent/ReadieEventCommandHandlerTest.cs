@@ -1,11 +1,9 @@
-﻿using UnitTests.Fakes;
-using UnitTests.Stubs;
+﻿using UnitTests.Stubs;
 using ViaEventAssociation.Core.Application.Common.CommandHandler;
 using ViaEventAssociation.Core.Application.Features.Event.CreateEvent;
 using ViaEventAssociation.Core.Application.Features.Event.ReadieEvent;
 using VIAEventAssociation.Core.Domain.Aggregates.Events.Entities;
 using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
-using VIAEventAssociation.Core.Domain.Common.Repositories;
 
 namespace UnitTests.Features.Event.ReadieEvent;
 

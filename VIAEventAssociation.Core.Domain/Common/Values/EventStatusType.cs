@@ -20,7 +20,7 @@ public class EventStatusType : Enumeration
 
     private bool Equals(EventStatusType other)
         => backingValue == other.backingValue;
-    
+
     public override bool Equals(object? obj)
     {
         if (ReferenceEquals(null, obj)) return false;
@@ -28,7 +28,6 @@ public class EventStatusType : Enumeration
         if (obj.GetType() != this.GetType()) return false;
         return Equals((EventStatusType)obj);
     }
-
 
     public override int GetHashCode()
         => backingValue.GetHashCode();

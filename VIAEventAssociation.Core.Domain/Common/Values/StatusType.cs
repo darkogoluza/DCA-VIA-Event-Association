@@ -4,9 +4,9 @@ namespace VIAEventAssociation.Core.Domain.Common.Values;
 
 public class StatusType : Enumeration
 {
-    public static readonly StatusType Pending = new StatusType(0, "Pending");
-    public static readonly StatusType Accepted = new StatusType(1, "Accepted");
-    public static readonly StatusType Rejected = new StatusType(2, "Rejected");
+    public static readonly StatusType Pending = new("Pending");
+    public static readonly StatusType Accepted = new("Accepted");
+    public static readonly StatusType Rejected = new("Rejected");
 
     private readonly string backingValue;
 
@@ -16,8 +16,12 @@ public class StatusType : Enumeration
     {
     }
 
-    private StatusType(int value, string displayName) : base(value, displayName)
+    public override bool Equals(object? obj)
     {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((StatusType)obj);
     }
 
     private bool Equals(StatusType other)
