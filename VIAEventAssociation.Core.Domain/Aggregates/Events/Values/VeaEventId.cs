@@ -20,6 +20,8 @@ public class VeaEventId : ValueObject
         return new VeaEventId(id);
     }
 
+    public static VeaEventId FromGuid(Guid guid) => new VeaEventId(guid);
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Id;

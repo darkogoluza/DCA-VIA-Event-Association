@@ -1,5 +1,6 @@
 ﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
+using VIAEventAssociation.Core.Domain.Aggregates.RequestsToJoin.Entities;
 using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
 using ViaEventAssociation.Core.Tools.OperationResult;
@@ -13,6 +14,10 @@ public class Guest : AggregateRoot
     internal LastName _lastName;
     internal Uri _profilePictureUrl;
     internal Email _email;
+
+    private Guest() // For EFC
+    {
+    }
 
     private Guest(GuestId id, FirstName firstName, LastName lastName, Email email, Uri profilePictureUrl) : base(id.Id)
     {

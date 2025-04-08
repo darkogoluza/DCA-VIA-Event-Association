@@ -11,7 +11,12 @@ public class Location : Entity
     private DateTime _startWorkingTimeDate;
     private DateTime _endWorkingTimeDate;
 
-    private Location(LocationName locationName, LocationCapacity locationCapacity, DateTime startWorkingTimeDate, DateTime endWorkingTimeDate)
+    private Location() // For EFC
+    {
+    }
+
+    private Location(LocationName locationName, LocationCapacity locationCapacity, DateTime startWorkingTimeDate,
+        DateTime endWorkingTimeDate)
     {
         _locationName = locationName;
         _locationCapacity = locationCapacity;
@@ -19,8 +24,9 @@ public class Location : Entity
         _endWorkingTimeDate = endWorkingTimeDate;
     }
 
-    protected static Result<Location> Create(LocationName locationName, LocationCapacity locationCapacity, DateTime startWorkingTimeDate,
-       DateTime endWorkingTimeDate)
+    protected static Result<Location> Create(LocationName locationName, LocationCapacity locationCapacity,
+        DateTime startWorkingTimeDate,
+        DateTime endWorkingTimeDate)
     {
         throw new NotImplementedException();
     }

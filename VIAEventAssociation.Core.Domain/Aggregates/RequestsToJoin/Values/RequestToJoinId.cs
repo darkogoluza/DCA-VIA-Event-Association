@@ -20,6 +20,8 @@ public class RequestToJoinId : ValueObject
         return new RequestToJoinId(id);
     }
 
+    public static RequestToJoinId FromGuid(Guid guid) => new RequestToJoinId(guid);
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Id;

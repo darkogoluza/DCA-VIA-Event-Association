@@ -12,6 +12,10 @@ public class Invitation : AggregateRoot
     internal StatusType _statusType;
     internal GuestId _inviteeId;
 
+    private Invitation() // For EFC
+    {
+    }
+
     private Invitation(InvitationId id, StatusType statusType, GuestId inviteeId) : base(id.Id)
     {
         _statusType = statusType;

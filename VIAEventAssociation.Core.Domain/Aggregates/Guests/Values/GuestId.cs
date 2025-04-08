@@ -20,6 +20,8 @@ public class GuestId : ValueObject
         return new GuestId(id);
     }
 
+    public static GuestId FromGuid(Guid guid) => new GuestId(guid);
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Id;

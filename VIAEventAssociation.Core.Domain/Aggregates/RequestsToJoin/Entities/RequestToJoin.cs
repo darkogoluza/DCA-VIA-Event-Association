@@ -5,6 +5,7 @@ using VIAEventAssociation.Core.Domain.Common.Bases;
 using VIAEventAssociation.Core.Domain.Common.Values;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
+namespace VIAEventAssociation.Core.Domain.Aggregates.RequestsToJoin.Entities;
 
 public class RequestToJoin : AggregateRoot
 {
@@ -14,7 +15,12 @@ public class RequestToJoin : AggregateRoot
     private GuestId _invitorId;
     private VeaEventId _veaEventId;
 
-    private RequestToJoin(RequestToJoinId id, StatusType statusType, Reasion reason, GuestId invitorId, VeaEventId veaEventId) : base(id.Id)
+    private RequestToJoin() // For EFC
+    {
+    }
+
+    private RequestToJoin(RequestToJoinId id, StatusType statusType, Reasion reason, GuestId invitorId,
+        VeaEventId veaEventId) : base(id.Id)
     {
         _statusType = statusType;
         _reason = reason;
@@ -23,7 +29,8 @@ public class RequestToJoin : AggregateRoot
         RequestToJoinId = id;
     }
 
-    public static Result<RequestToJoin> Create(StatusType statusType, Reasion reason, GuestId invitorId, VeaEventId veaEventId)
+    public static Result<RequestToJoin> Create(StatusType statusType, Reasion reason, GuestId invitorId,
+        VeaEventId veaEventId)
     {
         throw new NotImplementedException();
     }

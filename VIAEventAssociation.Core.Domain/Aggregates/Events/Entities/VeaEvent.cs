@@ -26,6 +26,8 @@ public class VeaEvent : AggregateRoot
     private TimeSpan _oneAM = new TimeSpan(1, 0, 0);
     private TimeSpan _eightAM = new TimeSpan(8, 0, 0);
 
+    private VeaEvent() { } // For EFC
+
     private VeaEvent(VeaEventId id, EventStatusType eventStatusType) : base(id.Id)
     {
         VeaEventId = id;
@@ -76,7 +78,6 @@ public class VeaEvent : AggregateRoot
 
         return Result<None>.Failure();
     }
-    // TODO: combine the two methods into one!
 
     public Result<None> UpdateStarEndDateTime(DateTime startDateTime, DateTime endDateTime)
     {

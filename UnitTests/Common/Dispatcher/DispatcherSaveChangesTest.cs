@@ -21,7 +21,7 @@ public class DispatcherSaveChangesTest
             .ReturnsAsync(Result<None>.Success);
 
         var decorator = new CommandSaveChanges(mockCommandDispatcher.Object, mockUnitOfWork.Object);
-        
+
         // Act
         await decorator.DispatchAsync(testCommand);
 
