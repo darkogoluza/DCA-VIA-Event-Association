@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.3" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+        <PackageReference Include="xunit" Version="2.5.3" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ViaEventAssociation.Core.Application\ViaEventAssociation.Core.Application.csproj" />
+      <ProjectReference Include="..\VIAEventAssociation.Core.Domain\VIAEventAssociation.Core.Domain.csproj" />
+      <ProjectReference Include="..\VIAEventAssociation.Core.Tools.Enumeration\VIAEventAssociation.Core.Tools.Enumeration.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Core.Tools.OperationResult\ViaEventAssociation.Core.Tools.OperationResult.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Infrastructure.SqliteDmPersistence\ViaEventAssociation.Infrastructure.SqliteDmPersistence.csproj" />
+    </ItemGroup>
+
+</Project>
