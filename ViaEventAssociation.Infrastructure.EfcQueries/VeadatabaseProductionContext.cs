@@ -1,11 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ViaEventAssociation.Infrastructure.EfcQueries.Models;
+using ViaEventAssociation.Infrastructure.EfcQueries.SeedFactories;
 
-namespace ViaEventAssociation.Infrastructure.EfcQueries.Models;
+namespace ViaEventAssociation.Infrastructure.EfcQueries;
 
 public partial class VeadatabaseProductionContext : DbContext
 {
     public VeadatabaseProductionContext()
     {
+    }
+
+    public static VeadatabaseProductionContext SetupReadContext()
+    {
+        DbContextOptionsBuilder<VeadatabaseProductionContext> optionsBuilder = new();
+        string testDbName = "Test" + Guid.NewGuid() + ".db";
+        optionsBuilder.UseSqlite(@"Data Source = " + testDbName);
+        VeadatabaseProductionContext context = new(optionsBuilder.Options);
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        return context;
     }
 
     public VeadatabaseProductionContext(DbContextOptions<VeadatabaseProductionContext> options)
@@ -26,8 +40,9 @@ public partial class VeadatabaseProductionContext : DbContext
     public virtual DbSet<RequestToJoin> RequestToJoins { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("Data Source = C:\\\\\\\\Users\\\\\\\\Darko\\\\\\\\Desktop\\\\\\\\VIA\\\\\\\\Semester 7\\\\\\\\DCA\\\\\\\\VIAEventAssociation\\\\\\\\ViaEventAssociation.Infrastructure.SqliteDmPersistence\\\\\\\\VEADatabaseProduction.db");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlite(
+            "Data Source = C:\\\\\\\\Users\\\\\\\\Darko\\\\\\\\Desktop\\\\\\\\VIA\\\\\\\\Semester 7\\\\\\\\DCA\\\\\\\\VIAEventAssociation\\\\\\\\ViaEventAssociation.Infrastructure.SqliteDmPersistence\\\\\\\\VEADatabaseProduction.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -90,7 +105,8 @@ public partial class VeadatabaseProductionContext : DbContext
 
             entity.Property(e => e.LocationId).HasColumnName("locationId");
 
-            entity.HasOne(d => d.LocationNavigation).WithOne(p => p.Location).HasForeignKey<Location>(d => d.LocationId);
+            entity.HasOne(d => d.LocationNavigation).WithOne(p => p.Location)
+                .HasForeignKey<Location>(d => d.LocationId);
         });
 
         modelBuilder.Entity<RequestToJoin>(entity =>
