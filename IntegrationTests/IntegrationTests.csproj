@@ -24,8 +24,10 @@
     <ItemGroup>
       <ProjectReference Include="..\ViaEventAssociation.Core.Application\ViaEventAssociation.Core.Application.csproj" />
       <ProjectReference Include="..\VIAEventAssociation.Core.Domain\VIAEventAssociation.Core.Domain.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Core.QueryContracts\ViaEventAssociation.Core.QueryContracts.csproj" />
       <ProjectReference Include="..\VIAEventAssociation.Core.Tools.Enumeration\VIAEventAssociation.Core.Tools.Enumeration.csproj" />
       <ProjectReference Include="..\ViaEventAssociation.Core.Tools.OperationResult\ViaEventAssociation.Core.Tools.OperationResult.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Infrastructure.EfcQueries\ViaEventAssociation.Infrastructure.EfcQueries.csproj" />
       <ProjectReference Include="..\ViaEventAssociation.Infrastructure.SqliteDmPersistence\ViaEventAssociation.Infrastructure.SqliteDmPersistence.csproj" />
     </ItemGroup>
 

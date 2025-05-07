@@ -21,7 +21,7 @@ public class ReadieEventIntegrationTests : IDisposable
 
     public ReadieEventIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

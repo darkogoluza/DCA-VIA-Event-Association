@@ -14,7 +14,7 @@ public class CreateVeaEventIntegrationTests : IDisposable
 
     public CreateVeaEventIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

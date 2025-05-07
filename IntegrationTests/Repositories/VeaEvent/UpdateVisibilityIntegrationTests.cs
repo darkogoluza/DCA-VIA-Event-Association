@@ -15,7 +15,7 @@ public class UpdateVisibilityIntegrationTests : IDisposable
 
     public UpdateVisibilityIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

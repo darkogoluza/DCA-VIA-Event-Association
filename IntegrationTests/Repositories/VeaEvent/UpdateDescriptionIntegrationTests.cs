@@ -15,7 +15,7 @@ public class UpdateDescriptionIntegrationTests : IDisposable
 
     public UpdateDescriptionIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

@@ -15,7 +15,7 @@ public class UpdateStartAndEndDateTimeIntegrationTests : IDisposable
 
     public UpdateStartAndEndDateTimeIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

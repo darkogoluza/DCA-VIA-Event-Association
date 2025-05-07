@@ -24,7 +24,7 @@ public class GuestCancelsParticipationEventIntegrationTests : IDisposable
 
     public GuestCancelsParticipationEventIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

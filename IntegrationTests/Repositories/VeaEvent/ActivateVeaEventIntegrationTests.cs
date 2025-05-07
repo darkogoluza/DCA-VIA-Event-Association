@@ -22,7 +22,7 @@ public class ActivateVeaEventIntegrationTests : IDisposable
 
     public ActivateVeaEventIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

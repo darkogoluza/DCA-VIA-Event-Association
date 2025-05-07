@@ -23,7 +23,7 @@ public class GuestParticipateEventIntegrationTests : IDisposable
 
     public GuestParticipateEventIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }

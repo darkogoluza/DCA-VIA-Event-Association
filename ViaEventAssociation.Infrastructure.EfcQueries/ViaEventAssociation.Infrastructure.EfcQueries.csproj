@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\VIAEventAssociation.Core.Domain\VIAEventAssociation.Core.Domain.csproj" />
       <ProjectReference Include="..\ViaEventAssociation.Core.QueryContracts\ViaEventAssociation.Core.QueryContracts.csproj" />
     </ItemGroup>
 

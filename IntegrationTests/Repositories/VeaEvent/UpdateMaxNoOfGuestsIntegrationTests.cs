@@ -15,7 +15,7 @@ public class UpdateMaxNoOfGuestsIntegrationTests : IDisposable
 
     public UpdateMaxNoOfGuestsIntegrationTests()
     {
-        _serviceProvider = TestServiceProvider.CreateServiceProvider();
+        _serviceProvider = TestServiceProviderCommandHandler.CreateServiceProvider();
 
         _commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
     }
