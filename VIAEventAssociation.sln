@@ -38,7 +38,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaEventAssociation.Infrastructure.EfcQueries", "ViaEventAssociation.Infrastructure.EfcQueries\ViaEventAssociation.Infrastructure.EfcQueries.csproj", "{1A3454A2-00A1-48C5-B9CF-CE8A67A6213F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaEventAssociation.Core.QueryContracts", "ViaEventAssociation.Core.QueryContracts\ViaEventAssociation.Core.QueryContracts.csproj", "{50179247-848D-41C0-A49A-97BC7706BE78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaEventAssociation.Core.QueryContracts", "ViaEventAssociation.Core.QueryContracts\ViaEventAssociation.Core.QueryContracts.csproj", "{ABFF72F5-D40C-4604-B856-4FAA10466368}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,7 +62,7 @@ Global
 		{445B3FA5-BE52-45E5-9EB8-3E20C5E6B21E} = {97B79C39-0971-4848-BC3F-4E2C52455C0D}
 		{9573BAEA-AEE2-49F3-BF74-90B4126B58A4} = {88D3E15D-6447-4666-BDC1-EBC2026E91EB}
 		{1A3454A2-00A1-48C5-B9CF-CE8A67A6213F} = {97B79C39-0971-4848-BC3F-4E2C52455C0D}
-		{50179247-848D-41C0-A49A-97BC7706BE78} = {6792170C-B19B-4625-9E56-A515605D8EDA}
+		{ABFF72F5-D40C-4604-B856-4FAA10466368} = {FE2CC59B-73DA-46A5-A221-3332B92B4183}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -115,9 +115,9 @@ Global
 		{1A3454A2-00A1-48C5-B9CF-CE8A67A6213F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3454A2-00A1-48C5-B9CF-CE8A67A6213F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3454A2-00A1-48C5-B9CF-CE8A67A6213F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50179247-848D-41C0-A49A-97BC7706BE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50179247-848D-41C0-A49A-97BC7706BE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50179247-848D-41C0-A49A-97BC7706BE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50179247-848D-41C0-A49A-97BC7706BE78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABFF72F5-D40C-4604-B856-4FAA10466368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFF72F5-D40C-4604-B856-4FAA10466368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFF72F5-D40C-4604-B856-4FAA10466368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFF72F5-D40C-4604-B856-4FAA10466368}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

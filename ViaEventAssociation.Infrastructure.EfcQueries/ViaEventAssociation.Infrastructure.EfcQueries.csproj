@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Queries\" />
+      <ProjectReference Include="..\ViaEventAssociation.Core.QueryContracts\ViaEventAssociation.Core.QueryContracts.csproj" />
     </ItemGroup>
 
 </Project>
