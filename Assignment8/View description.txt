@@ -1,0 +1,1 @@
+﻿This view shows each guests invitations, participation's and join requests. It only shows basic information. In this view you can also see the guest full name and the profile picture. 

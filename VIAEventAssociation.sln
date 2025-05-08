@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaEventAssociation.Infrast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaEventAssociation.Core.QueryContracts", "ViaEventAssociation.Core.QueryContracts\ViaEventAssociation.Core.QueryContracts.csproj", "{ABFF72F5-D40C-4604-B856-4FAA10466368}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment8", "Assignment8\Assignment8.csproj", "{5B433D11-1FF5-4D53-BDDC-836CC4B81147}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,7 @@ Global
 		{9573BAEA-AEE2-49F3-BF74-90B4126B58A4} = {88D3E15D-6447-4666-BDC1-EBC2026E91EB}
 		{1A3454A2-00A1-48C5-B9CF-CE8A67A6213F} = {97B79C39-0971-4848-BC3F-4E2C52455C0D}
 		{ABFF72F5-D40C-4604-B856-4FAA10466368} = {FE2CC59B-73DA-46A5-A221-3332B92B4183}
+		{5B433D11-1FF5-4D53-BDDC-836CC4B81147} = {78C713FC-10F0-4E13-A7E9-D1ED91AA9F0E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D0A9D03E-B393-4848-8EC1-41AE2262E90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -119,5 +122,9 @@ Global
 		{ABFF72F5-D40C-4604-B856-4FAA10466368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABFF72F5-D40C-4604-B856-4FAA10466368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABFF72F5-D40C-4604-B856-4FAA10466368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B433D11-1FF5-4D53-BDDC-836CC4B81147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B433D11-1FF5-4D53-BDDC-836CC4B81147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B433D11-1FF5-4D53-BDDC-836CC4B81147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B433D11-1FF5-4D53-BDDC-836CC4B81147}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

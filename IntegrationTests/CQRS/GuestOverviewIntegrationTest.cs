@@ -5,12 +5,12 @@ using ViaEventAssociation.Core.QueryContracts.QueryDispatching;
 
 namespace IntegrationTests.CQRS;
 
-public class PersonalProfilePageIntegrationTest 
+public class GuestOverviewIntegrationTest
 {
     private readonly IQueryDispatcher _queryDispatcher;
     private readonly ServiceProvider _serviceProvider;
 
-    public PersonalProfilePageIntegrationTest()
+    public GuestOverviewIntegrationTest()
     {
         _serviceProvider = TestServiceProviderCQRS.CreateServiceProvider();
 
@@ -18,25 +18,27 @@ public class PersonalProfilePageIntegrationTest
     }
 
     [Fact]
-    public async Task Should_ReturnValidPersonalProfileData_ForValidUserId()
+    public async Task Dispatching_GuestOverviewQuery_ReturnsInitializedGuestAndLists()
     {
-        // Act
-        var result = await _queryDispatcher.DispatchAsync(
-            new PersonalProfilePage.Query("5893604a-5eff-46c4-8056-77161a6e9665"));
+        // Arrange
+        var guestId = "230c1a99-d5c7-4fbc-9f48-07ccbb100936";
 
+        // Act
+        var result = await _queryDispatcher.DispatchAsync(new GuestOverview.Query(guestId));
 
         // Assert
         Assert.NotNull(result);
         Assert.NotNull(result.Guest);
         Assert.False(string.IsNullOrWhiteSpace(result.Guest.Name));
-        Assert.False(string.IsNullOrWhiteSpace(result.Guest.Email));
         Assert.False(string.IsNullOrWhiteSpace(result.Guest.ProfilePictureUrl));
 
-        Assert.True(result.UpcomingEventsCount >= 0);
-        Assert.NotNull(result.UpcomingEvents);
-        Assert.Equal(result.UpcomingEventsCount, result.UpcomingEvents.Count());
+        Assert.NotNull(result.Participations);
+        Assert.IsAssignableFrom<IEnumerable<GuestOverview.Participation>>(result.Participations);
 
-        Assert.NotNull(result.PastEvents);
-        Assert.True(result.PendingInvitationsCount >= 0);
+        Assert.NotNull(result.Invitations);
+        Assert.IsAssignableFrom<IEnumerable<GuestOverview.Invitation>>(result.Invitations);
+
+        Assert.NotNull(result.JoinRequests);
+        Assert.IsAssignableFrom<IEnumerable<GuestOverview.JoinRequest>>(result.JoinRequests);
     }
 }

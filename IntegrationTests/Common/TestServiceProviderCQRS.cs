@@ -24,6 +24,10 @@ public static class TestServiceProviderCQRS
         services.AddScoped<IQueryDispatcher, QueryDispatcher>();
         services.AddSingleton<CurrentDateTime>(() => new DateTime(2024, 4, 8, 15, 0, 0));
         services.AddScoped<IQueryHandler<PersonalProfilePage.Query, PersonalProfilePage.Answer>, PersonalProfilePageHandler>();
+        services.AddScoped<IQueryHandler<BrowseUpcomingEvents.Query, BrowseUpcomingEvents.Answer>, BrowseUpcomingEventsHandler>();
+        services.AddScoped<IQueryHandler<ViewSingleEvent.Query, ViewSingleEvent.Answer>, ViewSingleEventHandler>();
+        services.AddScoped<IQueryHandler<EventsEditingOverview.Query, EventsEditingOverview.Answer>, EventsEditingOverviewHandler>();
+        services.AddScoped<IQueryHandler<GuestOverview.Query, GuestOverview.Answer>, GuestOverviewHandler>();
 
         var serviceProvider = services.BuildServiceProvider();
 

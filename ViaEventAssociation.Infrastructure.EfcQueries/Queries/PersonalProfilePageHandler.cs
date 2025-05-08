@@ -19,7 +19,7 @@ public class PersonalProfilePageHandler(VeadatabaseProductionContext context, Cu
             .SingleAsync();
 
         List<PersonalProfilePage.UpcomingEvent> upcomingEvents = await context.Events
-            .OrderBy(e => e.StartDateTime)
+            .OrderByDescending(e => e.StartDateTime)
             .Where(e => e.StartDateTime.CompareTo(formattedDateTime) > 0)
             .Select(e => new PersonalProfilePage.UpcomingEvent(e.Title, e.Guests.Count(),
                 DateOnly.FromDateTime(DateTime.ParseExact("2024-04-30 15:00", "yyyy-MM-dd HH:mm",
@@ -30,7 +30,7 @@ public class PersonalProfilePageHandler(VeadatabaseProductionContext context, Cu
 
 
         List<PersonalProfilePage.PastEvent> pastEvents = await context.Events
-            .OrderBy(e => e.StartDateTime)
+            .OrderByDescending(e => e.StartDateTime)
             .Take(5)
             .Where(e => e.StartDateTime.CompareTo(formattedDateTime) < 0)
             .Select(e => new PersonalProfilePage.PastEvent(e.Title))
