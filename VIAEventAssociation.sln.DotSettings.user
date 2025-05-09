@@ -3,10 +3,10 @@
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
 	
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Program Files\JetBrains\JetBrains Rider 2024.3.5\tools\MSBuild\Current\Bin\MSBuild.exe</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7e2d0679_002D0c65_002D4f19_002D8758_002De9504520b910/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ActivateEventCommandTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7e2d0679_002D0c65_002D4f19_002D8758_002De9504520b910/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ActivateEventCommandTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\Darko\Desktop\VIA\Semester 7\DCA\VIAEventAssociation" Presentation="&amp;lt;Tests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=81ef5be0_002De148_002D402e_002Db9b3_002D2b91a8996a96/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ActivateEventCommandTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=81ef5be0_002De148_002D402e_002Db9b3_002D2b91a8996a96/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ActivateEventCommandTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;Project Location="C:\Users\Darko\Desktop\VIA\Semester 7\DCA\VIAEventAssociation\UnitTests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;UnitTests&amp;gt;" /&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
