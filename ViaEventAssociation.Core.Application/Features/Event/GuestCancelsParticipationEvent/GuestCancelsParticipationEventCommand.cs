@@ -1,5 +1,4 @@
-﻿using ViaEventAssociation.Core.Application.Features.Event.GuestParticipateEvent;
-using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
+﻿using VIAEventAssociation.Core.Domain.Aggregates.Events.Values;
 using VIAEventAssociation.Core.Domain.Aggregates.Guests.Values;
 using VIAEventAssociation.Core.Domain.Contracts;
 using ViaEventAssociation.Core.Tools.OperationResult;

@@ -34,4 +34,9 @@ public class VeaEventId : ValueObject
 
         return Id.Equals(((VeaEventId)obj).Id);
     }
+
+    public override int GetHashCode()
+    {
+        throw new NotImplementedException();
+    }
 }

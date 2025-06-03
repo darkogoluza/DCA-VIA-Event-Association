@@ -5,7 +5,7 @@ using ViaEventAssociation.Core.QueryContracts.QueryDispatching;
 
 namespace IntegrationTests.CQRS;
 
-public class BrowseUpcomingEventsIntegrationTest 
+public class BrowseUpcomingEventsIntegrationTest
 {
     private readonly IQueryDispatcher _queryDispatcher;
     private readonly ServiceProvider _serviceProvider;

@@ -4,16 +4,16 @@ namespace ViaEventAssociation.Presentation.WebAPI.REPRBase;
 
 public static class ApiEndpoint
 {
-    public static class WithRequest<TResponse> 
+    public static class WithRequest<TRequest>
     {
         public abstract class WithResponse<TResponse> : EndpointBase
         {
-            public abstract Task<ActionResult<TResponse>> HandleAsync();
+            public abstract Task<ActionResult<TResponse>> HandleAsync(TRequest request);
         }
 
         public abstract class WithoutResponse : EndpointBase
         {
-            public abstract Task<ActionResult> HandleAsync();
+            public abstract Task<ActionResult> HandleAsync(TRequest request);
         }
     }
 

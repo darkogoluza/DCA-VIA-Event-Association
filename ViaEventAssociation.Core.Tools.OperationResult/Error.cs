@@ -116,10 +116,10 @@ public class Error
     public static Error WrongEmailFormat() => BadInput("The emails is of a wrong format.");
 
     // First Name
-    public static Error WrongFirstNameFormat() => BadInput("First name is ofa wrong format.");
+    public static Error WrongFirstNameFormat() => BadInput("First name is of a wrong format.");
 
     // Last Name
-    public static Error WrongLastNameFormat() => BadInput("Last name is ofa wrong format.");
+    public static Error WrongLastNameFormat() => BadInput("Last name is of a wrong format.");
 
     // Invitation
     public static Error InvitationNotFound() => NotFound();

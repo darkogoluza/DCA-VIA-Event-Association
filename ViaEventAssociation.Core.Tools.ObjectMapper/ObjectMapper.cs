@@ -12,7 +12,7 @@ public abstract class ObjectMapper(IServiceProvider serviceProvider) : IMapper
 
         if (mappingConfig != null)
         {
-            return mappingConfig.Map((dynamic) input);
+            return mappingConfig.Map((dynamic)input);
         }
 
         string toJson = JsonSerializer.Serialize(input);

@@ -25,7 +25,7 @@ public class EventsEditingOverviewIntegrationTest
 
         // Assert
         Assert.NotNull(result);
-    
+
         Assert.NotNull(result.DraftEvents);
         Assert.IsAssignableFrom<IEnumerable<EventsEditingOverview.Event>>(result.DraftEvents);
 

@@ -13,7 +13,7 @@ using ViaEventAssociation.Infrastructure.SqliteDmPersistence.VeaEventPersistence
 
 namespace ViaEventAssociation.Infrastructure.SqliteDmPersistence;
 
-public class SqliteDmContext(DbContextOptions options) : DbContext(options)
+public class SqliteDmContext(DbContextOptions<SqliteDmContext> options) : DbContext(options)
 {
     public DbSet<VeaEvent> Events => Set<VeaEvent>();
     public DbSet<Guest> Guests => Set<Guest>();

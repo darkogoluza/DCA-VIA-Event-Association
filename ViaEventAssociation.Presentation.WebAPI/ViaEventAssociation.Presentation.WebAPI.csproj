@@ -12,7 +12,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Endpoints\" />
+      <ProjectReference Include="..\ViaEventAssociation.Core.Application\ViaEventAssociation.Core.Application.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Core.QueryContracts\ViaEventAssociation.Core.QueryContracts.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Core.Tools.ObjectMapper\ViaEventAssociation.Core.Tools.ObjectMapper.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Infrastructure.EfcQueries\ViaEventAssociation.Infrastructure.EfcQueries.csproj" />
+      <ProjectReference Include="..\ViaEventAssociation.Infrastructure.SqliteDmPersistence\ViaEventAssociation.Infrastructure.SqliteDmPersistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="IntegrationTests" />
     </ItemGroup>
 
 </Project>

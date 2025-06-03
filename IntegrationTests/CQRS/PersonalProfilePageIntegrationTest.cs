@@ -5,7 +5,7 @@ using ViaEventAssociation.Core.QueryContracts.QueryDispatching;
 
 namespace IntegrationTests.CQRS;
 
-public class PersonalProfilePageIntegrationTest 
+public class PersonalProfilePageIntegrationTest
 {
     private readonly IQueryDispatcher _queryDispatcher;
     private readonly ServiceProvider _serviceProvider;

@@ -32,7 +32,7 @@ public class BrowseUpcomingEventsHandler(VeadatabaseProductionContext context)
             .ToListAsync();
 
         int totalEventCount = await baseQuery.CountAsync();
-        int maxNumberOfPages = (int) Math.Ceiling((double) totalEventCount / query.PageSize);
+        int maxNumberOfPages = (int)Math.Ceiling((double)totalEventCount / query.PageSize);
 
         return new BrowseUpcomingEvents.Answer(events, maxNumberOfPages);
     }

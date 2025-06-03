@@ -15,7 +15,7 @@ public class QueryDispatcher(IServiceProvider serviceProvider) : IQueryDispatche
             throw new QueryHandlerNotFoundException(query.GetType().ToString(), typeof(TAnswer).ToString());
         }
 
-        return handler.HandleAsync((dynamic) query);
+        return handler.HandleAsync((dynamic)query);
     }
 }
 
